@@ -1,7 +1,14 @@
 class CaravansController < ApplicationController
+  before_action :set_caravan, only: %i[show edit update destroy]
+
 
   def index
     @caravans = Caravan.all
+  end
+
+  def destroy
+    @caravan.destroy
+    redirect_to root_path, status: :see_other
   end
 
   def new
@@ -19,19 +26,26 @@ class CaravansController < ApplicationController
   end
 
   def show
-    @caravan = Caravan.find(params[:id])
-  end
-
-  private
-
-  def caravan_params
-    params.require(:caravan).permit(:brand, :year, :model, :capacity, :gas_type, :description, :user_id)
   end
 
   def edit
   end
 
   def update
+
+    @caravan.update(caravan_params)
+    redirect_to root_path
+  end
+
+
+  private
+
+  def set_caravan
+    @caravan = Caravan.find(params[:id])
+  end
+
+  def caravan_params
+    params.require(:caravan).permit(:brand, :year, :model, :capacity, :gas_type, :description, :user_id)
   end
 
 end
