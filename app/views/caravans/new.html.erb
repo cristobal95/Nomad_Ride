@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" .btn.btn-primary>
 <%= simple_form_for(@caravan) do |f| %>
 <%= f.input :brand %>
 <%= f.input :year %>
@@ -6,6 +6,7 @@
 <%= f.input :capacity %>
 <%= f.input :gas_type %>
 <%= f.input :description %>
+ <%= f.input :photo, as: :file %>
 <%= f.submit %>
 <% end %>
 </div>
