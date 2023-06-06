@@ -1,11 +1,26 @@
-<div class="container">
-  <h2><%= @reservation.start_date %></h2>
-  <p><%= @reservation.finish_date %></p>
-  <p><%= @reservation.caravan.brand %></p>
-  <p><%= @reservation.caravan.model %></p>
-  <p><%= @reservation.caravan.year %></p>
-  <p><%= @reservation.caravan.gas_type %></p>
-  <p><%= @reservation.caravan.capacity %></p>
-  <p><%= @reservation.caravan.description %></p>
-  <p><%= @reservation.caravan.user.first_name %></p>
+<div class="container shadow mt-3 p-3 w-50">
+  <div class="container">
+  <h3>Detalles de la reserva</h3>
+  <p><%= "Fecha de inicio: #{ @reservation.start_date }" %></p>
+  <p><%= "Fecha de finalización: #{ @reservation.finish_date }" %></p>
+  <p><%= "Marca: #{ @reservation.caravan.brand} " %></p>
+  <p><%= "Modelo: #{ @reservation.caravan.model }" %></p>
+  <p><%= "Año: #{ @reservation.caravan.year }" %></p>
+  <p><%= "Gasolina: #{ @reservation.caravan.gas_type }" %></p>
+  <p><%= "Capacidad: #{ @reservation.caravan.capacity }" %></p>
+  <p><%= "Descripción: #{ @reservation.caravan.description }"  %></p>
+  <p><%= "Nombre del dueño: #{ @reservation.caravan.user.first_name }"  %></p>
+  </div>
+
+  <div class="container d-flex justify-content-center">
+  <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
+
+  <%= link_to("Editar", edit_reservation_path, class:"btn btn-secondary ms-2") %>
+
+  <%= link_to "Delete",
+  reservation_path(@reservation), class:"btn btn-secondary ms-2",
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+  </div>
+</div>
 </div>

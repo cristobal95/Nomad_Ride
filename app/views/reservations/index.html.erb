@@ -1,19 +1,19 @@
-<div class="container">
-  <div class="row">
-  <ul>
+<div class="container shadow mt-3 p-3 w-50">
+
+<h3 class="text-center"><%= "#{ @user.first_name }, estas son todas sus reservas:"%></h3>
+  <div class="content-center">
     <% @reservation.each do |reservation| %>
-      <div class="col-4">
-        <li><%= reservation.caravan.brand %></li>
-      </div>
-      <div class="col-4">
-        <li><%= reservation.start_date %></li>
-        <li><%= reservation.finish_date %></li>
-      </div>
-      <div class="col-4">
-        <li><%= reservation.start_date %></li>
-        <li><%= reservation.finish_date %></li>
+      <div class="container">
+        <%= link_to "Reserva Nº:#{reservation.id}", reservation_path(reservation) %> <br>
+        <%= "Fecha de inicio: #{reservation.start_date}" %> <br>
+        <%= "Fecha de finalización: #{reservation.finish_date}"  %>
+        <%= "Marca: #{reservation.caravan.brand}" %> <br>
+        <%= "Modelo: #{reservation.caravan.model}"  %><br>
+        <%= "Capacidad: #{reservation.caravan.capacity}"  %>
       </div>
     <% end %>
-  </ul>
+    <div class="d-flex justify-content-center">
+        <%= link_to("Ver más caravanas", caravans_path, class:"btn btn-primary ms-2") %>
+    </div>
   </div>
 </div>

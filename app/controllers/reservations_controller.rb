@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
 
   def index
     @reservation = Reservation.all
+    @user = current_user
   end
 
   def show
@@ -33,6 +34,12 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.update(reservation_params)
     redirect_to reservation_path(@reservation)
+  end
+
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to reservations_path, status: :see_other
   end
 
   private
