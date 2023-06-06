@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+  <ul>
+    <% @reservation.each do |reservation| %>
+      <div class="col-4">
+        <li><%= reservation.caravan.brand %></li>
+      </div>
+      <div class="col-4">
+        <li><%= reservation.start_date %></li>
+        <li><%= reservation.finish_date %></li>
+      </div>
+      <div class="col-4">
+        <li><%= reservation.start_date %></li>
+        <li><%= reservation.finish_date %></li>
+      </div>
+    <% end %>
+  </ul>
+  </div>
+</div>
