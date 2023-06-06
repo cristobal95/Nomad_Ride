@@ -1,7 +1,10 @@
-<div class="container">
-  <%= simple_form_for (@reservation) do |f| %>
+<div class="container shadow mt-3 p-3 w-50">
+  <%= simple_form_for [@caravan, @reservation] do |f| %>
   <%= f.input :start_date %>
   <%= f.input :finish_date %>
-  <%= f.submit class: "btn btn-primary"%>
+  <div class="d-flex justify-content-center">
+    <%= f.submit class:"btn btn-primary"%>
+    <%= link_to("Cancelar", reservations_path, class:"btn btn-primary ms-2") %>
+  </div>
 <% end %>
 </div>
