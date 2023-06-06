@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # CARAVANS INDEX
- # get "/", to: "caravans#index"
+  # get "/", to: "caravans#index"
   root to: "caravans#index"
 
   resources :reservations, only: %i[index show edit update]
 
-  resources :caravans, only: %i[show new create] do
+  resources :caravans do
     resources :reservations, only: %i[new create]
   end
 
