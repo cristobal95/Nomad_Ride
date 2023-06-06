@@ -10,7 +10,7 @@ Rails.application.routes.draw do
  # get "/", to: "caravans#index"
   root to: "caravans#index"
 
-  resources :caravans, only: %i[show new create] do
+  resources :caravans do
     resources :reservations, only: %i[new create]
   end
 

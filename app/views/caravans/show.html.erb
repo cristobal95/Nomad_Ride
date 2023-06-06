@@ -1,6 +1,17 @@
+<div class="container">
 <h2><%= @caravan.brand %></h2>
 <p><%= @caravan.year %></p>
 <p><%= @caravan.model %></p>
 <p><%= @caravan.gas_type %></p>
 <p><%= @caravan.capacity %></p>
 <p><%= @caravan.description %></p>
+
+<%= link_to("Todas las Caravanas", root_path) %>
+
+<%= link_to("Editar", edit_caravan_path) %>
+
+<%= link_to "Delete",
+ caravan_path(@caravan),
+data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+</div>
