@@ -49,6 +49,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_211222) do
     t.integer "capacity"
     t.string "gas_type"
     t.text "description"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

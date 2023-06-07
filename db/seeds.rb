@@ -9,13 +9,6 @@ users = [
     password: "123456"
   },
   {
-    first_name: "Braian",
-    last_name: "Ocares",
-    username: "braian",
-    email: "braian@nomad.com",
-    password: "123456"
-  },
-  {
     first_name: "Juan Manuel",
     last_name: "Binda",
     username: "juanma",
@@ -44,7 +37,10 @@ caravan_1 = Caravan.new(
   capacity: 4,
   gas_type: "Gasolina",
   description: "Descripción de la caravana 1.",
-  user_id: 2
+  user_id: 2,
+  address: "Buenos Aires",
+  latitude: -34.5248057,
+  longitude: -58.4833146
 )
 photo_1 = URI.open("https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_9527866fefb84e3e840b1fd28e2a23c0.jpg")
 caravan_1.photo.attach(io: photo_1, filename: "Ford_1.png", content_type: "image/png")
@@ -57,7 +53,10 @@ caravan_2 = Caravan.new(
   capacity: 6,
   gas_type: "Diésel",
   description: "Descripción de la caravana 2.",
-  user_id: 1
+  user_id: 1,
+  address: "Santiago de Chile",
+  latitude: -33.5081562,
+  longitude: -70.5931697
 )
 photo_2 = URI.open("https://i.pinimg.com/originals/4d/d5/de/4dd5def8461fd85719293769826481ad.jpg")
 caravan_2.photo.attach(io: photo_2, filename: "Volvo_2.png", content_type: "image/png")
@@ -70,7 +69,10 @@ caravan_3 = Caravan.new(
   capacity: 8,
   gas_type: "Electric",
   description: "Descripción de la caravana 4.",
-  user_id: 2
+  user_id: 3,
+  address: "Santa Cruz de la Sierra",
+  latitude: -17.8057529,
+  longitude: -63.1787717
 )
 photo_3 = URI.open("https://cdn.motor1.com/images/mgl/88RyP/s1/4x3/2021-winnebago-ekko.webp")
 caravan_3.photo.attach(io: photo_3, filename: "Ford_3.png", content_type: "image/png")
@@ -83,7 +85,10 @@ caravan_4 = Caravan.new(
   capacity: 4,
   gas_type: "Diésel",
   description: "Descripción de la caravana 5.",
-  user_id: 3
+  user_id: 2,
+  address: "Buenos Aires",
+  latitude: -34.5248057,
+  longitude: -58.4833146
 )
 
 photo_4 = URI.open("https://elborne.com.ar/wp-content/uploads/2015/04/FH.jpg")
@@ -97,7 +102,10 @@ caravan_5 = Caravan.new(
   capacity: 6,
   gas_type: "Gasolina",
   description: "Descripción de la caravana 6.",
-  user_id: 2
+  user_id: 3,
+  address: "Santa Cruz de la Sierra",
+  latitude: -17.8057529,
+  longitude: -63.1787717
 )
 
 photo_5 = URI.open("https://www.trucksnl.com/pictures/ad-7334452-8d463e226537cc8d/caravana_alcoba_volvo_fl300_camper_like_new_2x_slide_out_hydraulic_stamps_automatic_euro5_2010_7334452.jpg")
@@ -111,7 +119,10 @@ caravan_6 = Caravan.new(
   capacity: 8,
   gas_type: "Gasolina",
   description: "Descripción de la caravana 3.",
-  user_id: 2
+  user_id: 3,
+  address: "Buenos Aires",
+  latitude: -17.8057529,
+  longitude: -63.1787717
 )
 
 photo_6 = URI.open("https://www.motor.es/fotos-noticias/2013/05/renault-kangoo-travel-pack-renault-kangoo-travel-pack-la-auto-caravana-mas-pequena-201313557_18.jpg")

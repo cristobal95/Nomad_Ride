@@ -7,6 +7,9 @@ class CreateCaravans < ActiveRecord::Migration[7.0]
       t.integer :capacity
       t.string :gas_type
       t.text :description
+      t.string :address
+      t.float :latitude
+      t.float :longitude
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
