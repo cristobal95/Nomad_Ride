@@ -34,7 +34,7 @@ class CaravansController < ApplicationController
   def update
 
     @caravan.update(caravan_params)
-    redirect_to root_path
+    redirect_to caravan_path
   end
 
 
@@ -45,7 +45,7 @@ class CaravansController < ApplicationController
   end
 
   def caravan_params
-    params.require(:caravan).permit(:brand, :year, :model, :capacity, :gas_type, :description, :user_id)
+    params.require(:caravan).permit(:brand, :year, :model, :capacity, :gas_type, :description, :user_id, :photo)
   end
 
 end
