@@ -6,7 +6,7 @@
       <div class="container">
         <%= link_to "Reserva Nº:#{reservation.id}", reservation_path(reservation) %> <br>
         <%= "Fecha de inicio: #{reservation.start_date}" %> <br>
-        <%= "Fecha de finalización: #{reservation.finish_date}"  %>
+        <%= "Fecha de finalización: #{reservation.finish_date}"  %> <br>
         <%= "Marca: #{reservation.caravan.brand}" %> <br>
         <%= "Modelo: #{reservation.caravan.model}"  %><br>
         <%= "Capacidad: #{reservation.caravan.capacity}"  %>
