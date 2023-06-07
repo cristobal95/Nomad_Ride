@@ -27,6 +27,18 @@ class CaravansController < ApplicationController
   end
 
   def show
+    @caravan = Caravan.find(params[:id])
+    # The `geocoded` scope filters only flats with coordinates
+    #@markers = @caravan.geocoded.map do |caravan|
+    @markers = [
+      {
+        lat: @caravan.latitude,
+        lng: @caravan.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { caravan: @caravan }),
+        marker_html: render_to_string(partial: "marker", locals: { caravan: @caravan })
+      }
+    ]
+    #end
   end
 
   def edit
@@ -46,7 +58,7 @@ class CaravansController < ApplicationController
   end
 
   def caravan_params
-    params.require(:caravan).permit(:brand, :year, :model, :capacity, :gas_type, :description, :user_id, :photo)
+    params.require(:caravan).permit(:brand, :year, :model, :capacity, :gas_type, :description, :user_id, :address, :photo)
   end
 
 end
