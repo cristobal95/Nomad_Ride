@@ -1,19 +1,30 @@
-<div class="container shadow mt-3 p-3 w-50">
+<div class="container shadow mt-3 p-3 w-75">
+  <h3 class="text-center"><%= "#{ @user.first_name }, estas son todas sus reservas:"%></h3>
+  <div class="row">
+          <% @reservation.each do |reservation| %>
 
-<h3 class="text-center"><%= "#{ @user.first_name }, estas son todas sus reservas:"%></h3>
-  <div class="content-center">
-    <% @reservation.each do |reservation| %>
-      <div class="container">
-        <%= link_to "Reserva Nº:#{reservation.id}", reservation_path(reservation) %> <br>
-        <%= "Fecha de inicio: #{reservation.start_date}" %> <br>
-        <%= "Fecha de finalización: #{reservation.finish_date}"  %> <br>
-        <%= "Marca: #{reservation.caravan.brand}" %> <br>
-        <%= "Modelo: #{reservation.caravan.model}"  %><br>
-        <%= "Capacidad: #{reservation.caravan.capacity}"  %>
-      </div>
-    <% end %>
-    <div class="d-flex justify-content-center">
-        <%= link_to("Página de inicio", caravans_path, class:"btn btn-secondary ms-2") %>
+
+            <div class="col-12 col-md-6 col-lg-4 mt-4">
+              <div class="card">
+                <div class="text-center mt-2">
+                  <%= cl_image_tag reservation.caravan.photo.key, height: 200, width: 200, crop: :fill %>
+                </div>
+
+                <div class="card-body text-center">
+                  <p><%= "Fecha de inicio: #{reservation.start_date}" %></p> <br>
+                  <p><%= "Fecha de finalización: #{reservation.finish_date}"  %></p> <br>
+                  <p><%= "Marca: #{reservation.caravan.brand}" %></p> <br>
+                  <p><%= "Modelo: #{reservation.caravan.model}"  %></p> <br>
+                  <p><%= "Capacidad: #{reservation.caravan.capacity}"  %></p> <br>
+
+                  <div class="d-flex justify-content-center">
+                    <%= link_to("Ver detalles", reservation_path(reservation), class:"btn btn-primary ms-2") %>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          <% end %>
     </div>
-  </div>
 </div>
