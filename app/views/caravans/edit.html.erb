@@ -1,11 +1,22 @@
-<div class="container">
-<%= simple_form_for(@caravan) do |f| %>
-<%= f.input :brand %>
-<%= f.input :year %>
-<%= f.input :model %>
-<%= f.input :capacity %>
-<%= f.input :gas_type %>
-<%= f.input :description %>
-<%= f.submit %>
-<% end %>
+<div class="container shadow mt-3 p-3 w-50">
+  <div>
+    <% if user_signed_in? && current_user.id == @caravan.user_id %>
+      <%= simple_form_for(@caravan) do |f| %>
+      <%= f.input :brand %>
+      <%= f.input :year %>
+      <%= f.input :model %>
+      <%= f.input :capacity %>
+      <%= f.input :gas_type %>
+      <%= f.input :description %>
+      <%= f.submit %>
+      <% end %>
+  </div>
+    <% else %>
+      <div class="d-flex justify-content-center">
+        <p>No posees permisos para editar esta caravana</p> <br>
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= link_to("Volver", caravan_path(@caravan), class:"btn btn-primary ms-2") %>
+      </div>
+      <% end %>
 </div>

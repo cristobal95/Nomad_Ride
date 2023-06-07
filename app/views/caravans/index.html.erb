@@ -1,14 +1,18 @@
 <div class="container">
 <h1>Todas las caravanas</h1>
 <ul>
+  <% if user_signed_in? %>
+    <% @view_caravans = @caravans.reject{ |caravan| caravan.user_id == current_user.id } %>
+    <% @view_caravans.each do |caravan| %>
+      <li><%= link_to caravan.brand, caravan_path(caravan) %></li>
+    <% end %>
 
-  <% @caravans.each do |caravan| %>
-    <li><%= link_to caravan.brand, caravan_path(caravan) %></li>
+  <% else %>
+      <% @caravans.each do |caravan| %>
+        <li><%= link_to caravan.brand, caravan_path(caravan) %></li>
+      <% end %>
   <% end %>
 
   <%= link_to("Crear Caravana", new_caravan_path ) %>
-
-
-
 </ul>
 </div>
