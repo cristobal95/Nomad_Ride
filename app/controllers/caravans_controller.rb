@@ -13,6 +13,7 @@ class CaravansController < ApplicationController
 
   def new
     @caravan = Caravan.new
+    @caravan.user_id = current_user.id
   end
 
   def create
