@@ -1,9 +1,10 @@
 <div class="container shadow mt-3 p-3 w-50">
   <%= simple_form_for [@caravan, @reservation] do |f| %>
-  <%= f.input :start_date, html5:true %>
-  <%= f.input :finish_date, html5:true %>
-  <div class="d-flex justify-content-center">
-    <%= f.submit class:"btn btn-primary"%>
-  </div>
-<% end %>
+    <%= f.input :start_date, html5: true %>
+    <%= f.input :finish_date, html5: true %>
+    <div class="d-flex justify-content-center">
+      <%= button_tag "Volver", class: "btn btn-secondary", type: "button", onclick: "window.location.href='#{caravan_path@caravan}'" %>
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>
