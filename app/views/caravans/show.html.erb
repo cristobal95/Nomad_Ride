@@ -7,6 +7,7 @@
 <p><%= @caravan.model %></p>
 <p><%= @caravan.gas_type %></p>
 <p><%= @caravan.capacity %></p>
+<p><%= @caravan.address %></p>
 <p><%= @caravan.description %></p>
 
 
@@ -23,8 +24,11 @@
 <%
 =end%>
 
-
-
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 
 
 
