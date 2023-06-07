@@ -1,3 +1,4 @@
+
 <div class="container shadow mt-3 p-3 w-50">
   <div>
     <% if user_signed_in? && current_user.id == @caravan.user_id %>
@@ -8,6 +9,7 @@
       <%= f.input :capacity %>
       <%= f.input :gas_type %>
       <%= f.input :description %>
+      <%= f.input :address %>
       <%= f.submit %>
       <% end %>
   </div>

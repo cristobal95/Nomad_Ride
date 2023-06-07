@@ -6,6 +6,8 @@ ruby "3.1.2"
 
 gem "cloudinary"
 
+gem "geocoder"
+
 gem "dotenv-rails", groups: [:development, :test]
 
 gem "bootstrap"
