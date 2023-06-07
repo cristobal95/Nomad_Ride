@@ -17,6 +17,7 @@ class CaravansController < ApplicationController
   end
 
   def create
+
     @caravan = Caravan.new(caravan_params)
     @caravan.user_id = current_user.id
     if @caravan.save
