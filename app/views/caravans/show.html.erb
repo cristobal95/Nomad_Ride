@@ -25,12 +25,11 @@
 
 
 
-
-
-
 <%= link_to("Todas las Caravanas", root_path) %>
-
 <%= link_to("Editar", edit_caravan_path) %>
+<%= link_to("Hacer una reservacion", new_caravan_reservation_path(@caravan)) %>
+
+
 
 <%= link_to "Delete",
  caravan_path(@caravan),
