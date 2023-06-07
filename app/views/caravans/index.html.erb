@@ -1,19 +1,56 @@
-<div class="container">
-<h1>Todas las caravanas</h1>
-<ul>
-  <% if user_signed_in? %>
-    <% @view_caravans = @caravans.reject{ |caravan| caravan.user_id == current_user.id } %>
-    <% @view_caravans.each do |caravan| %>
-      <li><%= link_to caravan.brand, caravan_path(caravan) %></li>
+<div class="banner">
+    <div class="row">
+      <div class="col-md-12 position-relative">
+        <%= image_tag("banner.jpg", alt: "Banner de una caravana", class: "img-fluid") %>
+        <h1 class="position-absolute top-50 end-0 translate-middle-y text-white me-5">Nomad Ride</h1>
+      </div>
+    </div>
+</div>
+<div class="container shadow mt-3 p-3 w-75">
+  <div>
+    <h5>Caravanas destacadas</h5>
+  </div>
+
+    <% if user_signed_in? %>
+      <% @view_caravans = @caravans.reject{ |caravan| caravan.user_id == current_user.id } %>
+      <div class="row">
+        <% @view_caravans.each do |caravan| %>
+
+
+          <div class="col-12 col-md-6 col-lg-4 mt-4">
+            <div class="card">
+              <div class="text-center mt-2">
+                <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill %>
+              </div>
+
+              <div class="card-body text-center">
+                <h5 class="card-title text-center text-center"><%= link_to caravan.brand, caravan_path(caravan) %></h5>
+                <p class="card-text"><%= caravan.description %></p>
+                <%= link_to "Más detalles", caravan_path(caravan), class:"btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    <% else %>
+        <div class="row">
+          <% @caravans.each do |caravan| %>
+            <div class="col-12 col-md-6 col-lg-4 mt-4">
+            <div class="card">
+              <div class="text-center mt-2">
+                <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill %>
+              </div>
+
+              <div class="card-body text-center">
+                <h5 class="card-title text-center text-center"><%= link_to caravan.brand, caravan_path(caravan) %></h5>
+                <p class="card-text"><%= caravan.description %></p>
+                <%= link_to "Más detalles", caravan_path(caravan), class:"btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
     <% end %>
 
-  <% else %>
-      <% @caravans.each do |caravan| %>
-        <li><%= link_to caravan.brand, caravan_path(caravan) %></li>
-      <% end %>
-  <% end %>
-
-  <%= link_to("Crear Caravana", new_caravan_path ) %>
-
-</ul>
 </div>

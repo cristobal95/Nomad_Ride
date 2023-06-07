@@ -1,26 +1,39 @@
-<div class="container shadow mt-3 p-3 w-50">
-  <div class="container">
-  <h3>Detalles de la reserva</h3>
-  <p><%= "Fecha de inicio: #{ @reservation.start_date }" %></p>
-  <p><%= "Fecha de finalización: #{ @reservation.finish_date }" %></p>
-  <p><%= "Marca: #{ @reservation.caravan.brand} " %></p>
-  <p><%= "Modelo: #{ @reservation.caravan.model }" %></p>
-  <p><%= "Año: #{ @reservation.caravan.year }" %></p>
-  <p><%= "Gasolina: #{ @reservation.caravan.gas_type }" %></p>
-  <p><%= "Capacidad: #{ @reservation.caravan.capacity }" %></p>
-  <p><%= "Descripción: #{ @reservation.caravan.description }"  %></p>
-  <p><%= "Nombre del dueño: #{ @reservation.caravan.user.first_name }"  %></p>
-  </div>
+<div class="container shadow mt-3 p-3 w-50 ">
 
-  <div class="container d-flex justify-content-center">
-  <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
 
-  <%= link_to("Editar", edit_reservation_path, class:"btn btn-secondary ms-2") %>
 
-  <%= link_to "Delete",
-  reservation_path(@reservation), class:"btn btn-secondary ms-2",
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 
-  </div>
-</div>
+
+              <div class="card">
+                <div class="text-center mt-2">
+                  <h4 class="text-center">Detalles de la reserva</h4>
+                  <%= cl_image_tag @reservation.caravan.photo.key, height: 200, width: 200, crop: :fill %>
+                </div>
+
+                <div class="card-body text-center">
+                <p><%= "Fecha de inicio: #{ @reservation.start_date }" %></p>
+                <p><%= "Fecha de finalización: #{ @reservation.finish_date }" %></p>
+                <p><%= "Marca: #{ @reservation.caravan.brand} " %></p>
+                <p><%= "Modelo: #{ @reservation.caravan.model }" %></p>
+                <p><%= "Año: #{ @reservation.caravan.year }" %></p>
+                <p><%= "Gasolina: #{ @reservation.caravan.gas_type }" %></p>
+                <p><%= "Capacidad: #{ @reservation.caravan.capacity }" %></p>
+                <p><%= "Descripción: #{ @reservation.caravan.description }"  %></p>
+                <p><%= "Alquilada a: #{ @reservation.caravan.user.first_name }"  %></p>
+
+                <div class="container d-flex justify-content-center">
+                <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
+
+                <%= link_to("Editar", edit_reservation_path, class:"btn btn-primary ms-2") %>
+
+                <%= link_to "Delete",
+                reservation_path(@reservation), class:"btn btn-primary ms-2",
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+                </div>
+
+
+                </div>
+              </div>
+
 </div>
