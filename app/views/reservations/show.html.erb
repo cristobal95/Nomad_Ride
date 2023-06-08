@@ -21,18 +21,25 @@
                 <p><%= "Capacidad: #{ @reservation.caravan.capacity }" %></p>
                 <p><%= "Descripción: #{ @reservation.caravan.description }"  %></p>
                 <p><%= "Alquilada a: #{ @reservation.caravan.user.first_name }"  %></p>
+                <p><%= "Ubicación: #{ @reservation.caravan.address }"  %></p>
 
                 <div class="container d-flex justify-content-center">
                 <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
 
                 <%= link_to("Editar", edit_reservation_path, class:"btn btn-primary ms-2") %>
 
-                <%= link_to "Delete",
+                <%= link_to "Borrar",
                 reservation_path(@reservation), class:"btn btn-primary ms-2",
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                data: {turbo_method: :delete, turbo_confirm: "Estás seguro?"} %>
 
                 </div>
-
+                  <br>
+                  <h2 class="text-center">Ubicación</h2>
+                  <div style="width: 100%; height: 600px;"
+                    data-controller="map"
+                    data-map-markers-value="<%= @markers.to_json %>"
+                    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+                  </div>
 
                 </div>
               </div>
