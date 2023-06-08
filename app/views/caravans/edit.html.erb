@@ -9,8 +9,12 @@
       <%= f.input :capacity %>
       <%= f.input :gas_type %>
       <%= f.input :description %>
+      <%= f.input :day_price %>
       <%= f.input :address %>
-      <%= f.submit %>
+      <div class="d-flex justify-content-evenly">
+        <%= link_to("Cancelar", mycaravans_path, class:"btn btn-primary ms-2") %>
+        <%= f.submit class:"btn btn-primary"%>
+      </div>
       <% end %>
   </div>
     <% else %>
@@ -18,7 +22,7 @@
         <p>No posees permisos para editar esta caravana</p> <br>
       </div>
       <div class="d-flex justify-content-center">
-        <%= link_to("Volver", caravan_path(@caravan), class:"btn btn-primary ms-2") %>
+        <%= link_to("Volver", mycaravans_path , class:"btn btn-primary ms-2") %>
       </div>
       <% end %>
 </div>

@@ -1,6 +1,6 @@
 class CaravansController < ApplicationController
   before_action :set_caravan, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: %i[index show]
 
 
 
@@ -10,7 +10,7 @@ class CaravansController < ApplicationController
 
   def destroy
     @caravan.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to mycaravans_path, status: :see_other
   end
 
 
@@ -24,7 +24,7 @@ class CaravansController < ApplicationController
     @caravan = Caravan.new(caravan_params)
     @caravan.user_id = current_user.id
     if @caravan.save
-      redirect_to root_path
+      redirect_to mycaravans_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -51,7 +51,14 @@ class CaravansController < ApplicationController
   def update
 
     @caravan.update(caravan_params)
-    redirect_to caravan_path
+    redirect_to mycaravans_path
+  end
+
+  def mycaravans
+    if user_signed_in?
+      @caravans = Caravan.all
+      @caravans = @caravans.select{ |caravan| caravan.user_id == current_user.id }
+    end
   end
 
 
@@ -62,7 +69,7 @@ class CaravansController < ApplicationController
   end
 
   def caravan_params
-    params.require(:caravan).permit(:brand, :year, :model, :capacity, :gas_type, :description, :user_id, :address, :photo)
+    params.require(:caravan).permit(:brand, :year, :model, :capacity, :gas_type, :description, :user_id, :address, :photo, :day_price)
   end
 
 end

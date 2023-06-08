@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     resources :reservations, only: %i[new create]
   end
 
+  get "/mycaravans", to: "caravans#mycaravans"
+
 end
