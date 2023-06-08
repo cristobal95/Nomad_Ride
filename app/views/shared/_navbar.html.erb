@@ -12,12 +12,12 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
 
-          <li class="nav-item dropdown">
-            <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Mis Caravanas
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Crear Caravana", "/caravans/new", class: "nav-link" %>
-            </div>
+
+          <li class="nav-item">
+            <%= link_to "Mis Caravanas", "/", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Crear Caravana", "/caravans/new", class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Solicitudes", "#", class: "nav-link" %>
