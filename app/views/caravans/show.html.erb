@@ -1,7 +1,10 @@
 <div class="container shadow mt-3 p-3 w-50">
-  <div class="d-flex justify-content-center">
-  <%= cl_image_tag @caravan.photo.key, height: 300, width: 400, crop: :fill %>
+
+  <div class="text-center mt-3">
+    <h4 class="text-center mb-3">Detalles de la caravana</h4>
+    <%= cl_image_tag @caravan.photo.key, height: 300, width: 400, crop: :fill %>
   </div>
+
 
   <div class="container w-50 h-50 content-center mt-2">
     <h5 class="text-center"><%= @caravan.brand.upcase %></h5>
@@ -11,17 +14,22 @@
     <p><%= "Combustible: #{@caravan.gas_type}" %></p>
     <p><%= "Capacidad: #{@caravan.capacity} pers." %></p>
     <p><%= "Ubicación: #{@caravan.address}" %></p>
+    <div class="d-flex justify-content-evenly mb-3">
+      <p class="card-text"><%= "$ #{@caravan.day_price} / day " %></p>
+    </div>
     <p class="border border-secondary p-3 w-100 rounded container mt-3 mb-3"><%= @caravan.description %></p>
 
 
   </div>
 
-  <div class="container mb-3">
+  <div class="container mb-3 p-3">
     <% if user_signed_in? && current_user.id == @caravan.user_id %>
-      <%= link_to("Todas las Caravanas", root_path, class:"btn btn-primary") %>
-      <%= link_to("Editar", edit_caravan_path) %>
-      <%= link_to "Delete", caravan_path(@caravan),
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <div class="d-flex justify-content-evenly">
+        <%= link_to("Volver", root_path, class:"btn btn-primary") %>
+        <%= link_to("Editar", edit_caravan_path, class:"btn btn-primary") %>
+        <%= link_to "Delete", caravan_path(@caravan),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>
+      </div>
   </div>
 
     <% else %>

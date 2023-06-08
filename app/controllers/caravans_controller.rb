@@ -59,7 +59,7 @@ class CaravansController < ApplicationController
   end
 
   def caravan_params
-    params.require(:caravan).permit(:brand, :year, :model, :capacity, :gas_type, :description, :user_id, :address, :photo)
+    params.require(:caravan).permit(:brand, :year, :model, :capacity, :gas_type, :description, :user_id, :address, :photo, :day_price)
   end
 
 end

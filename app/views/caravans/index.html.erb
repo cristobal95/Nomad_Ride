@@ -31,6 +31,9 @@
                   <p class="card-text"><%= "Año: #{caravan.year}" %></p>
                   <p class="card-text"><%= "#{caravan.gas_type}" %></p>
                 </div>
+                <div class="d-flex justify-content-evenly mb-3">
+                  <p class="card-text"><%= "$ #{caravan.day_price} / day " %></p>
+                </div>
                 <%= link_to "Más detalles", caravan_path(caravan), class:"btn btn-primary" %>
               </div>
             </div>
@@ -44,12 +47,20 @@
             <div class="col-12 col-md-6 col-lg-4 mt-4">
             <div class="card">
               <div class="text-center mt-2">
-                <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill %>
+                <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill, class:"rounded" %>
               </div>
 
               <div class="card-body text-center">
-                <h5 class="card-title text-center text-center"><%= link_to caravan.brand, caravan_path(caravan) %></h5>
-                <p class="card-text"><%= caravan.description %></p>
+                <h5 class="card-title text-center text-center"><%= link_to caravan.brand.upcase, caravan_path(caravan) %></h5>
+                <h6 class="card-text mt-3 mb-4"><%= caravan.model %></h6>
+                <div class="d-flex justify-content-evenly mb-3">
+                  <p class="card-text"><%= "#{caravan.capacity} pers." %></p>
+                  <p class="card-text"><%= "Año: #{caravan.year}" %></p>
+                  <p class="card-text"><%= "#{caravan.gas_type}" %></p>
+                </div>
+                <div class="d-flex justify-content-evenly mb-3">
+                  <p class="card-text"><%= "$ #{caravan.day_price} / day " %></p>
+                </div>
                 <%= link_to "Más detalles", caravan_path(caravan), class:"btn btn-primary" %>
               </div>
             </div>
