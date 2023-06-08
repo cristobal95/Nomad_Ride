@@ -8,6 +8,7 @@ export default class extends Controller {
   }
 
   connect() {
+
     mapboxgl.accessToken = "pk.eyJ1IjoianVhbm1hYmluZGEiLCJhIjoiY2xodXp6dmxhMDQ5ZzNkbzN5c3dkdTZzbyJ9.KeFY3Df_k-48eUEQYhHI7Q"
 
     this.map = new mapboxgl.Map({

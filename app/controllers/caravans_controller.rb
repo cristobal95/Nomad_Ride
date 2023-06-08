@@ -2,6 +2,8 @@ class CaravansController < ApplicationController
   before_action :set_caravan, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
 
+
+
   def index
     @caravans = Caravan.all
   end
@@ -10,6 +12,7 @@ class CaravansController < ApplicationController
     @caravan.destroy
     redirect_to mycaravans_path, status: :see_other
   end
+
 
   def new
     @caravan = Caravan.new
