@@ -17,6 +17,7 @@
     <div class="d-flex justify-content-evenly mb-3">
       <p class="card-text"><%= "$ #{@caravan.day_price} / day " %></p>
     </div>
+    <h3>Descripción:</h3>
     <p class="border border-secondary p-3 w-100 rounded container mt-3 mb-3"><%= @caravan.description %></p>
 
 
@@ -27,19 +28,20 @@
       <div class="d-flex justify-content-evenly">
         <%= link_to("Volver", mycaravans_path, class:"btn btn-primary") %>
         <%= link_to("Editar", edit_caravan_path, class:"btn btn-primary") %>
-        <%= link_to "Delete", caravan_path(@caravan),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>
+        <%= link_to "Borrar", caravan_path(@caravan),
+        data: {turbo_method: :delete, turbo_confirm: "Estas seguro?"}, class:"btn btn-primary" %>
       </div>
-  </div>
-
     <% else %>
     <div class="d-flex justify-content-evenly">
       <%= link_to("Volver", root_path, class:"btn btn-primary") %>
       <%= link_to("Reservar", new_caravan_reservation_path(@caravan), class:"btn btn-primary") %>
-    <% end %>
+      <% end %>
+    </div><br>
+    <h2 class="text-center">Ubicación</h2>
+        <div style="width: 100%; height: 600px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
   </div>
-  <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
