@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   # get "/", to: "caravans#index"
   root to: "caravans#index"
 
+  post '/reservations/change_status', to: 'reservations#change_status'
+
+  get "/caravans/:caravan_id/requests", to: "caravans#showrequests"
+
+  get "/requests", to: "caravans#requests"
+
   resources :reservations, only: %i[index show edit update destroy]
 
   resources :caravans do

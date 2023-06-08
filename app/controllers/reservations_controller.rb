@@ -42,6 +42,13 @@ class ReservationsController < ApplicationController
     redirect_to reservations_path, status: :see_other
   end
 
+  def change_status
+    @reservation = Reservation.find(params[:format])
+    @reservation.status = true
+    @reservation.save
+    redirect_to requests_path
+  end
+
   private
 
   def reservation_params
