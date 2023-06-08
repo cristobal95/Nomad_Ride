@@ -25,7 +25,7 @@
   <div class="container mb-3 p-3">
     <% if user_signed_in? && current_user.id == @caravan.user_id %>
       <div class="d-flex justify-content-evenly">
-        <%= link_to("Volver", root_path, class:"btn btn-primary") %>
+        <%= link_to("Volver", mycaravans_path, class:"btn btn-primary") %>
         <%= link_to("Editar", edit_caravan_path, class:"btn btn-primary") %>
         <%= link_to "Delete", caravan_path(@caravan),
         data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>

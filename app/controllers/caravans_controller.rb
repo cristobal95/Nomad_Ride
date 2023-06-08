@@ -21,7 +21,7 @@ class CaravansController < ApplicationController
     @caravan = Caravan.new(caravan_params)
     @caravan.user_id = current_user.id
     if @caravan.save
-      redirect_to root_path
+      redirect_to mycaravans_path
     else
       render :new, status: :unprocessable_entity
     end
