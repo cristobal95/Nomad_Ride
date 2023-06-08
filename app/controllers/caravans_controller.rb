@@ -8,7 +8,7 @@ class CaravansController < ApplicationController
 
   def destroy
     @caravan.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to mycaravans_path, status: :see_other
   end
 
   def new
@@ -48,7 +48,14 @@ class CaravansController < ApplicationController
   def update
 
     @caravan.update(caravan_params)
-    redirect_to caravan_path
+    redirect_to mycaravans_path
+  end
+
+  def mycaravans
+    if user_signed_in?
+      @caravans = Caravan.all
+      @caravans = @caravans.select{ |caravan| caravan.user_id == current_user.id }
+    end
   end
 
 
