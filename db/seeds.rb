@@ -33,7 +33,7 @@ puts "Users creados"
 caravan_1 = Caravan.new(
   brand: "Ford",
   year: 2020,
-  model: "Modelo 1",
+  model: "Truck Move",
   capacity: 4,
   gas_type: "Gasolina",
   description: "Caravana de gran volumen,fabricada en USA,con todas la comodidades de una autocaravana  en un espacio mas reducido . Vehículo nuevo,  que se conduce  con la misma facilidad que un turismo. Espaciosa  y muy manejable,  para hacer un viaje diferente   en un vehículo con una novedosa distribución :  4 plazas en marcha y 4 para dormir , distribuÍdos en 2 camas de matrimonio separadas (una trasera transversal en la parte baja y otra en el techo elevable accediendo por escalera ) de tal manera que se puede hacer uso de todo el camper con las dos camas montadas.",
@@ -50,7 +50,7 @@ caravan_1.save!
 caravan_2 = Caravan.new(
   brand: "Volvo",
   year: 2018,
-  model: "Modelo 2",
+  model: "Confort",
   capacity: 6,
   gas_type: "Diésel",
   description: "Aire acondicionado sólo en cabina. Airbag conductor y copiloto. Placa solar. Segunda batería Equipamiento: clarabollas y ventanas con mosquitera y oscurecedores. Frigorifico trivalente con congelador. Calefacción y agua caliente. Cocina con triple fuego y fregadero. Baño con lavabo, ducha, armario, WC químico. Capacidad del tanque de aguas limpias de 100 y aguas grises de 100. Cuadro de control de calefacción, agua caliente, niveles de aguas limpias, grises y baterias. Mosquitera puerta.",
@@ -67,7 +67,7 @@ caravan_2.save!
 caravan_3 = Caravan.new(
   brand: "Ford",
   year: 2021,
-  model: "Modelo 4",
+  model: "House Feel",
   capacity: 8,
   gas_type: "Electric",
   description: "Preciosa y nueva caravana integral con  una conduccion que te permitira una vision panoramica que te enamorara durante tu viaje.Cama en lsla trasera muy amplia.con glp(no tendras que cambiar botella de gas).muy comodo.amplio garaje donde caben hasta bicicletas",
@@ -84,7 +84,7 @@ caravan_3.save!
 caravan_4 = Caravan.new(
   brand: "Volvo",
   year: 2020,
-  model: "Modelo 5",
+  model: "Rider",
   capacity: 4,
   gas_type: "Diésel",
   description: "Vehículo perfecto para estancia de familias con todas las comodidades de un hogar o parejas con ganas de descubrir todo un mundo",
@@ -102,7 +102,7 @@ caravan_4.save!
 caravan_5 = Caravan.new(
   brand: "Nissan",
   year: 2020,
-  model: "Modelo 6",
+  model: "Big Model",
   capacity: 6,
   gas_type: "Gasolina",
   description: "Nuestra caravana es perfecta para toda la familia, o para ese road trip de amigas que siempre quisisteis hacer, o para una escapada en pareja sin rumbo, ni planes cerrados…en definitiva, nuestra Camper es perfecta para todas las aventuras que se os ocurran. ¿Y todo esto por qué? Pues por las increíbles soluciones constructivas que tiene, es compacta, espaciosa, con gran almacenaje, dos camas siempre",
@@ -120,7 +120,7 @@ caravan_5.save!
 caravan_6 = Caravan.new(
   brand: "Renault",
   year: 2022,
-  model: "Modelo 3",
+  model: "Model T",
   capacity: 8,
   gas_type: "Gasolina",
   description: "Nuestro vehículo es perfecto para viajes en familia con dos niños o entre amigos. Gracias a sus dimensiones, la conducción se asemeja a la de un coche, es posible entrar en las ciudades y aparcar en la mayoría de aparcamientos públicos.",
