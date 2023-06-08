@@ -3,10 +3,13 @@ class CaravansController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
 
-
   def index
     @caravans = Caravan.all
+    if params[:query].present?
+      @caravans = @caravans.search_by_model_brand(params[:query])
+    end
   end
+
 
   def destroy
     @caravan.destroy
