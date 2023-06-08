@@ -23,7 +23,6 @@ class CaravansController < ApplicationController
   end
 
   def create
-
     @caravan = Caravan.new(caravan_params)
     @caravan.user_id = current_user.id
     if @caravan.save
@@ -32,6 +31,7 @@ class CaravansController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def show
     @caravan = Caravan.find(params[:id])
@@ -52,7 +52,6 @@ class CaravansController < ApplicationController
   end
 
   def update
-
     @caravan.update(caravan_params)
     redirect_to mycaravans_path
   end
@@ -64,6 +63,20 @@ class CaravansController < ApplicationController
     end
   end
 
+  def showrequests
+    if user_signed_in?
+      @reservations = Reservation.all
+      @caravan = Caravan.find(params[:caravan_id])
+      @reservations = @reservations.select { |reservation| reservation.caravan_id == current_user.id }
+    end
+  end
+
+  def requests
+    if user_signed_in?
+      @reservations = Reservation.all
+      @reservations = @reservations.select { |reservation| reservation.caravan.user.id == current_user.id }
+    end
+  end
 
   private
 

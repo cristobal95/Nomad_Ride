@@ -1,9 +1,4 @@
 <div class="container shadow mt-3 p-3 w-50 ">
-
-
-
-
-
               <div class="card">
                 <div class="text-center mt-3">
                   <h4 class="text-center mb-3">Detalles de la reserva</h4>
@@ -18,19 +13,35 @@
                 <p><%= "Modelo: #{ @reservation.caravan.model }" %></p>
                 <p><%= "Año: #{ @reservation.caravan.year }" %></p>
                 <p><%= "Gasolina: #{ @reservation.caravan.gas_type }" %></p>
-                <p><%= "Capacidad: #{ @reservation.caravan.capacity }" %></p>
+                <p><%= "Capacidad: #{ @reservation.caravan.capacity } pers." %></p>
                 <p><%= "Descripción: #{ @reservation.caravan.description }"  %></p>
-                <p><%= "Alquilada a: #{ @reservation.caravan.user.first_name }"  %></p>
+
+                <p><%= "Alquilada a: #{ @reservation.caravan.user.first_name }" if @reservation.caravan.user.id != current_user.id %></p>
                 <p><%= "Ubicación: #{ @reservation.caravan.address }"  %></p>
 
-                <div class="container d-flex justify-content-center">
-                <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
+                <% if @reservation.caravan.user.id != current_user.id%>
+                  <div class="container d-flex justify-content-center">
+                  <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
 
-                <%= link_to("Editar", edit_reservation_path, class:"btn btn-primary ms-2") %>
+                  <%= link_to("Editar", edit_reservation_path, class:"btn btn-primary ms-2") %>
 
-                <%= link_to "Borrar",
+                  <%= link_to "Borrar",
                 reservation_path(@reservation), class:"btn btn-primary ms-2",
                 data: {turbo_method: :delete, turbo_confirm: "Estás seguro?"} %>
+
+                  </div>
+                <% else %>
+                  <div class="container d-flex justify-content-center">
+                  <%= link_to("Volver", requests_path, class:"btn btn-primary ms-2") %>
+
+                  <%= link_to "Rechazar",
+                  reservation_path(@reservation), class:"btn btn-primary ms-2",
+                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                  <% if @reservation.status == false %>
+                    <%= button_to "Aprobar", reservations_change_status_path(id: @reservation), class:"btn btn-primary ms-2" %>
+                  <% end %>
+
+                <% end %>
 
                 </div>
                   <br>
@@ -43,5 +54,4 @@
 
                 </div>
               </div>
-
 </div>
