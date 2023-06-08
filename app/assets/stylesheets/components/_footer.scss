@@ -1,0 +1,36 @@
+.footer {
+  background: #0b64e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0px 50px;
+  color:rgb(255, 255, 255);
+  font-size: 25px;
+ //  position: fixed;
+  margin-top: 50px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  // z-index: 9999; /* Adjust the z-index as needed */
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer .fa-regular {
+  color: #D23333;
+}
