@@ -3,19 +3,20 @@
   <%= cl_image_tag @caravan.photo.key, height: 300, width: 400, crop: :fill %>
   </div>
 
-  <div class="container w-50 content-center mt-2">
-    <h2 class="text-center"><%= @caravan.brand %></h2>
-    <p class="text-center"><%= @caravan.model %></p>
+  <div class="container w-50 h-50 content-center mt-2">
+    <h5 class="text-center"><%= @caravan.brand.upcase %></h5>
+    <h6 class="text-center mt-1 mb-2"><%= @caravan.model %></h6>
     <p><%= "Año: #{@caravan.year}" %></p>
 
     <p><%= "Combustible: #{@caravan.gas_type}" %></p>
-    <p><%= "Capacidad: #{@caravan.capacity}" %></p>
-    <p><%= "Descripción: #{@caravan.description}" %></p>
-    <p><%= @caravan.address %></p>
+    <p><%= "Capacidad: #{@caravan.capacity} pers." %></p>
+    <p><%= "Ubicación: #{@caravan.address}" %></p>
+    <p class="border border-secondary p-3 w-100 rounded container mt-3 mb-3"><%= @caravan.description %></p>
+
 
   </div>
 
-  <div class="container">
+  <div class="container mb-3">
     <% if user_signed_in? && current_user.id == @caravan.user_id %>
       <%= link_to("Todas las Caravanas", root_path, class:"btn btn-primary") %>
       <%= link_to("Editar", edit_caravan_path) %>
@@ -25,8 +26,8 @@
 
     <% else %>
     <div class="d-flex justify-content-evenly">
-      <%= link_to("Todas las Caravanas", root_path, class:"btn btn-primary") %>
-      <%= link_to("Hacer una reservacion", new_caravan_reservation_path(@caravan), class:"btn btn-primary") %>
+      <%= link_to("Volver", root_path, class:"btn btn-primary") %>
+      <%= link_to("Reservar", new_caravan_reservation_path(@caravan), class:"btn btn-primary") %>
     <% end %>
   </div>
   <div style="width: 100%; height: 600px;"
@@ -34,16 +35,3 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
-
-
-<%
-=begin%>
- <div class="card-category"
-  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @caravan.photo.key, height: 300, crop: :fill %>')"
->
-  Cool caravan
-</div>
-<%
-=end%>
-
