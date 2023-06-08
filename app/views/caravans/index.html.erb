@@ -58,8 +58,8 @@
 <div class="banner">
     <div class="row">
       <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 position-relative">
-        <%= image_tag("banner.jpg", alt: "Banner de una caravana", class: "img-fluid") %>
-        <h1 class="position-absolute top-50 end-0 translate-middle-y text-white me-5">Nomad Ride</h1>
+        <%= image_tag("banner.jpg", alt: "Banner de una caravana", class: "imagen img-fluid") %>
+        <h1 class="position-absolute top-50 end-0 translate-middle-y text-white me-5 titulo">Nomad Ride</h1>
       </div>
     </div>
 </div>
@@ -67,13 +67,13 @@
 
 <div class="row justify-content-center">
   <div class="col-sm-8 my-3">
-    <%= form_with url: caravans_path, method: :get, class: "d-flex" do %>
+    <%= form_with url: caravans_path, method: :get, class: "d-flex search-form" do %>
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
-            placeholder: "Type a keyword"
+            class: "form-control search-input",
+            placeholder: "Busca por marca, modelo o ciudad"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Buscar", name: "", class: "btn btn-primary search-button" %>
     <% end %>
   </div>
 </div>
@@ -116,24 +116,26 @@
     <% else %>
         <div class="row">
           <% @caravans.each do |caravan| %>
-            <div class="col-12 col-md-6 col-lg-4 mt-4">
-            <div class="card">
-              <div class="text-center mt-2">
-                <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill, class:"rounded" %>
-              </div>
+          <div class="col-12 col-md-6 col-lg-4 mt-4">
+            <div data-aos="zoom-in-up"></div>
+              <div class="card">
+                <div class="text-center mt-2">
+                  <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill, class:"rounded" %>
+                </div>
 
-              <div class="card-body text-center">
-                <h5 class="card-title text-center text-center"><%= link_to caravan.brand.upcase, caravan_path(caravan) %></h5>
-                <h6 class="card-text mt-3 mb-4"><%= caravan.model %></h6>
-                <div class="d-flex justify-content-evenly mb-3">
-                  <p class="card-text"><%= "#{caravan.capacity} pers." %></p>
-                  <p class="card-text"><%= "Año: #{caravan.year}" %></p>
-                  <p class="card-text"><%= "#{caravan.gas_type}" %></p>
+                <div class="card-body text-center">
+                  <h5 class="card-title text-center text-center"><%= link_to caravan.brand.upcase, caravan_path(caravan) %></h5>
+                  <h6 class="card-text mt-3 mb-4"><%= caravan.model %></h6>
+                  <div class="d-flex justify-content-evenly mb-3">
+                    <p class="card-text"><%= "#{caravan.capacity} pers." %></p>
+                    <p class="card-text"><%= "Año: #{caravan.year}" %></p>
+                    <p class="card-text"><%= "#{caravan.gas_type}" %></p>
+                  </div>
+                  <div class="d-flex justify-content-evenly mb-3">
+                    <p class="card-text"><%= "$ #{caravan.day_price} / day " %></p>
+                  </div>
+                  <%= link_to "Más detalles", caravan_path(caravan), class:"btn btn-primary" %>
                 </div>
-                <div class="d-flex justify-content-evenly mb-3">
-                  <p class="card-text"><%= "$ #{caravan.day_price} / day " %></p>
-                </div>
-                <%= link_to "Más detalles", caravan_path(caravan), class:"btn btn-primary" %>
               </div>
             </div>
           </div>

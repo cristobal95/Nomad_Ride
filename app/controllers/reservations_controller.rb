@@ -43,7 +43,7 @@ class ReservationsController < ApplicationController
   end
 
   def change_status
-    @reservation = Reservation.find(params[:format])
+    @reservation = Reservation.find(params[:id])
     @reservation.status = true
     @reservation.save
     redirect_to requests_path

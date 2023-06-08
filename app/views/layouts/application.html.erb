@@ -11,22 +11,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     </head>
       <body>
-        <% unless controller_name == 'caravans' && action_name == 'index' %>
-          <%= render 'shared/navbar' %>
-        <% end %>
-        <%= yield %>
+
+          <% unless controller_name == 'caravans' && action_name == 'index' %>
+            <%= render 'shared/navbar' %>
+          <% end %>
 
 
+            <%= yield %>
 
-        <% unless controller_path.starts_with?("devise/") %>
-          <footer class="footer">
-          <%= render "shared/footer" %>
+
+            <%= render "shared/flashes" %>
+          <footer class="footer w-100">
+            <%= render "shared/footer" %>
           </footer>
-        <% end %>
 
-
-        <%= render "shared/flashes" %>
+          <script>
+            AOS.init();
+          </script>
       </body>
 </html>
