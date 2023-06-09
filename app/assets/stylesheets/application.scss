@@ -93,3 +93,140 @@
 .search-button:hover {
   background-color: #aaa;
 }
+
+
+.navbar {
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+.avatar {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.avatar img {
+  width: 100%;
+  height: auto;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+}
+
+.navbar-brand {
+  display: inline-block;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.navbar-brand img {
+  width: 100%;
+  height: auto;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.1);
+}
+
+
+.search-form {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #f5f5f5;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  padding: 15px 30px;
+  font-size: 16px;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+
+.container {
+  background-color: #ffffff;
+}
+
+.container h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.container .row {
+  margin-top: 1rem;
+}
+
+.container .card {
+  margin-top: 1rem;
+}
+
+.container .text-center {
+  margin-top: 0.5rem;
+}
+
+.container .card-body {
+  text-align: center;
+}
+
+.container .card-title {
+  text-align: center;
+}
+
+.container .card-text {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.container .d-flex {
+  justify-content: space-evenly;
+  margin-bottom: 0.75rem;
+}
+
+.container .btn {
+  margin-top: 0.75rem;
+}
+
+.card-text-price {
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #c3dcde;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.card-text {
+  background-color: #c3dcde;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
