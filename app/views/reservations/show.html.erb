@@ -20,23 +20,23 @@
                 <p><%= "Ubicación: #{ @reservation.caravan.address }"  %></p>
 
                 <% if @reservation.caravan.user.id != current_user.id%>
-                  <div class="container d-flex justify-content-center">
+                  <div class="container d-flex justify-content-evenly">
                   <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
 
                   <%= link_to("Editar", edit_reservation_path, class:"btn btn-primary ms-2") %>
 
-                  <%= link_to "Borrar",
+                  <%= link_to "Eliminar",
                 reservation_path(@reservation), class:"btn btn-primary ms-2",
-                data: {turbo_method: :delete, turbo_confirm: "Estás seguro?"} %>
+                data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
 
                   </div>
                 <% else %>
-                  <div class="container d-flex justify-content-center">
+                  <div class="container d-flex justify-content-evenly">
                   <%= link_to("Volver", requests_path, class:"btn btn-primary ms-2") %>
 
                   <%= link_to "Rechazar",
                   reservation_path(@reservation), class:"btn btn-primary ms-2",
-                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                  data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
                   <% if @reservation.status == false %>
                     <%= button_to "Aprobar", reservations_change_status_path(id: @reservation), class:"btn btn-primary ms-2" %>
                   <% end %>
@@ -52,6 +52,6 @@
                       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
                     </div>
                   </div>
-                <% end %>  
+                <% end %>
               </div>
 </div>
