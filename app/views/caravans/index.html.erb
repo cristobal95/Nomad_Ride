@@ -89,7 +89,7 @@
         <% @view_caravans.each do |caravan| %>
 
           <div class="col-12 col-md-6 col-lg-4 mt-4">
-            <div class="card">
+            <div class="card card-custom">
               <div class="text-center mt-2">
                 <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill, class:"rounded" %>
               </div>
@@ -116,7 +116,7 @@
         <div class="row">
             <% @caravans.each do |caravan| %>
                 <div class="col-12 col-md-6 col-lg-4 mt-4">
-                    <div class="card">
+                    <div class="card card-custom">
                       <div class="text-center mt-2">
                         <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill, class:"rounded" %>
                       </div>
