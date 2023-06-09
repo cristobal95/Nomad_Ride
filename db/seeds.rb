@@ -1,38 +1,34 @@
 require "open-uri"
 
-Caravan.all.destroy_all
-Reservation.all.destroy_all
-User.all.destroy_all
+# users = [
+#   {
+#     first_name: "Cristóbal",
+#     last_name: "Selame",
+#     username: "cris",
+#     email: "cris@nomad.com",
+#     password: "123456"
+#   },
+#   {
+#     first_name: "Juan Manuel",
+#     last_name: "Binda",
+#     username: "juanma",
+#     email: "juanma@nomad.com",
+#     password: "123456"
+#   },
+#   {
+#     first_name: "Hugo",
+#     last_name: "Acosta",
+#     username: "hugo",
+#     email: "hugo@nomad.com",
+#     password: "123456"
+#   }
+# ]
 
-users = [
-  {
-    first_name: "Cristóbal",
-    last_name: "Selame",
-    username: "cris",
-    email: "cris@nomad.com",
-    password: "123456"
-  },
-  {
-    first_name: "Juan Manuel",
-    last_name: "Binda",
-    username: "juanma",
-    email: "juanma@nomad.com",
-    password: "123456"
-  },
-  {
-    first_name: "Hugo",
-    last_name: "Acosta",
-    username: "hugo",
-    email: "hugo@nomad.com",
-    password: "123456"
-  }
-]
+# users.each do |u|
+#   User.create!(u)
+# end
 
-users.each do |u|
-  User.create!(u)
-end
-
-puts "Users creados"
+# puts "Users creados"
 
 caravan_1 = Caravan.new(
   brand: "Ford",
@@ -41,7 +37,7 @@ caravan_1 = Caravan.new(
   capacity: 4,
   gas_type: "Gasolina",
   description: "Caravana de gran volumen,fabricada en USA,con todas la comodidades de una autocaravana  en un espacio mas reducido . Vehículo nuevo,  que se conduce  con la misma facilidad que un turismo. Espaciosa  y muy manejable,  para hacer un viaje diferente   en un vehículo con una novedosa distribución :  4 plazas en marcha y 4 para dormir , distribuÍdos en 2 camas de matrimonio separadas (una trasera transversal en la parte baja y otra en el techo elevable accediendo por escalera ) de tal manera que se puede hacer uso de todo el camper con las dos camas montadas.",
-  user_id: 2,
+  user_id: 4,
   address: "Buenos Aires",
   latitude: -34.5248057,
   longitude: -58.4833146,
@@ -58,7 +54,7 @@ caravan_2 = Caravan.new(
   capacity: 6,
   gas_type: "Diésel",
   description: "Aire acondicionado sólo en cabina. Airbag conductor y copiloto. Placa solar. Segunda batería Equipamiento: clarabollas y ventanas con mosquitera y oscurecedores. Frigorifico trivalente con congelador. Calefacción y agua caliente. Cocina con triple fuego y fregadero. Baño con lavabo, ducha, armario, WC químico. Capacidad del tanque de aguas limpias de 100 y aguas grises de 100. Cuadro de control de calefacción, agua caliente, niveles de aguas limpias, grises y baterias. Mosquitera puerta.",
-  user_id: 1,
+  user_id: 5,
   address: "Santiago de Chile",
   latitude: -33.5081562,
   longitude: -70.5931697,
@@ -75,7 +71,7 @@ caravan_3 = Caravan.new(
   capacity: 8,
   gas_type: "Electric",
   description: "Preciosa y nueva caravana integral con  una conduccion que te permitira una vision panoramica que te enamorara durante tu viaje.Cama en lsla trasera muy amplia.con glp(no tendras que cambiar botella de gas).muy comodo.amplio garaje donde caben hasta bicicletas",
-  user_id: 3,
+  user_id: 6,
   address: "Santa Cruz de la Sierra",
   latitude: -17.8057529,
   longitude: -63.1787717,
@@ -92,7 +88,7 @@ caravan_4 = Caravan.new(
   capacity: 4,
   gas_type: "Diésel",
   description: "Vehículo perfecto para estancia de familias con todas las comodidades de un hogar o parejas con ganas de descubrir todo un mundo",
-  user_id: 2,
+  user_id: 4,
   address: "Buenos Aires",
   latitude: -34.5248057,
   longitude: -58.4833146,
@@ -110,7 +106,7 @@ caravan_5 = Caravan.new(
   capacity: 6,
   gas_type: "Gasolina",
   description: "Nuestra caravana es perfecta para toda la familia, o para ese road trip de amigas que siempre quisisteis hacer, o para una escapada en pareja sin rumbo, ni planes cerrados…en definitiva, nuestra Camper es perfecta para todas las aventuras que se os ocurran. ¿Y todo esto por qué? Pues por las increíbles soluciones constructivas que tiene, es compacta, espaciosa, con gran almacenaje, dos camas siempre",
-  user_id: 3,
+  user_id: 5,
   address: "Santa Cruz de la Sierra",
   latitude: -17.8057529,
   longitude: -63.1787717,
@@ -128,7 +124,7 @@ caravan_6 = Caravan.new(
   capacity: 8,
   gas_type: "Gasolina",
   description: "Nuestro vehículo es perfecto para viajes en familia con dos niños o entre amigos. Gracias a sus dimensiones, la conducción se asemeja a la de un coche, es posible entrar en las ciudades y aparcar en la mayoría de aparcamientos públicos.",
-  user_id: 3,
+  user_id: 6,
   address: "Buenos Aires, Argentina",
   latitude: -17.8057529,
   longitude: -63.1787717,
@@ -146,7 +142,7 @@ caravan_7 = Caravan.new(
   capacity: 10,
   gas_type: "Eléctrico",
   description: "Caravana con todas las comodidades de una autocaravana pero en un espacio más reducido. Se trata de un vehículo muy manejable para llegar a todos los rincones con toda tranquilidad. Dos son los puntos fuertes en su interior que la hacen destacar frente a la competencia, el nuevo cabin loft incrementa la movilidad y nos aporta mayor sensación de espacio y el baño dúplex, una solución única de baño de doble espacio.",
-  user_id: 3,
+  user_id: 5,
   address: "Santa Cruz de la Sierra",
   latitude: -17.8057529,
   longitude: -63.1787717,
@@ -164,7 +160,7 @@ caravan_8 = Caravan.new(
   capacity: 6,
   gas_type: "Gasolina",
   description: "Es un vehículo estupendo para disfrutar de la naturaleza, de nuestras playas, o fiestas populares, o simplemente para viajar en modo SLOW.Está muy cuidada, con todas las revisiones al día. Además en perfecto estado mecánico y sin deterioros en la chapa, ni en el equipamiento.",
-  user_id: 1,
+  user_id: 4,
   address: "Santiago de Chile, Chile",
   latitude: -33.5081562,
   longitude: -70.5931697,
@@ -182,7 +178,7 @@ caravan_9 = Caravan.new(
   capacity: 8,
   gas_type: "Gasolina",
   description: "Camper espectacular para ir con la familia, o para deportes, gracias a su garaje de gran volumen convertible.",
-  user_id: 1,
+  user_id: 5,
   address: "Santiago de Chile, Chile",
   latitude: -33.5081562,
   longitude: -70.5931697,
@@ -197,21 +193,21 @@ puts "Caravanas creadass"
 
 reservations = [
   {
-    user_id: 1,
+    user_id: 4,
     caravan_id: 4,
     start_date: "2023/06/08",
     finish_date: "2023/07/08",
     status: true
   },
   {
-    user_id: 2,
+    user_id: 5,
     caravan_id: 1,
     start_date: "2023/08/14",
     finish_date: "2023/09/10",
     status: false
   },
   {
-    user_id: 3,
+    user_id: 6,
     caravan_id: 2,
     start_date: "2023/04/15",
     finish_date: "2023/05/15",
