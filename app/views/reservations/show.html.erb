@@ -1,5 +1,5 @@
 <div class="container shadow mt-3 p-3 w-50 ">
-              <div class="card">
+              <div>
                 <div class="text-center mt-3">
                   <h4 class="text-center mb-3">Detalles de la reserva</h4>
                   <%= cl_image_tag @reservation.caravan.photo.key, height: 200, width: 200, crop: :fill %>
@@ -20,14 +20,14 @@
                 <p><%= "Ubicación: #{ @reservation.caravan.address }"  %></p>
 
                 <% if @reservation.caravan.user.id != current_user.id%>
-                  <div class="container d-flex justify-content-center">
+                  <div class="container d-flex justify-content-evenly">
                   <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
 
                   <%= link_to("Editar", edit_reservation_path, class:"btn btn-primary ms-2") %>
 
-                  <%= link_to "Borrar",
+                  <%= link_to "Eliminar",
                 reservation_path(@reservation), class:"btn btn-primary ms-2",
-                data: {turbo_method: :delete, turbo_confirm: "Estás seguro?"} %>
+                data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
 
                   </div>
                 <% else %>
@@ -36,22 +36,22 @@
 
                   <%= link_to "Rechazar",
                   reservation_path(@reservation), class:"btn btn-primary ms-2",
-                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                  data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
                   <% if @reservation.status == false %>
                     <%= button_to "Aprobar", reservations_change_status_path(id: @reservation), class:"btn btn-primary ms-2" %>
                   <% end %>
 
                 <% end %>
-
-                </div>
-                  <br>
-                  <h2 class="text-center">Ubicación</h2>
-                  <div style="width: 100%; height: 600px;"
-                    data-controller="map"
-                    data-map-markers-value="<%= @markers.to_json %>"
-                    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+                <% if @reservation.caravan.user.id != current_user.id%>
                   </div>
-
-                </div>
+                    <br>
+                    <h2 class="text-center">Ubicación</h2>
+                    <div style="width: 100%; height: 600px;"
+                      data-controller="map"
+                      data-map-markers-value="<%= @markers.to_json %>"
+                      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+                    </div>
+                  </div>
+                <% end %>
               </div>
 </div>

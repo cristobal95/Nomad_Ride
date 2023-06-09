@@ -1,21 +1,79 @@
-<div class="banner w-100">
+<div class="navbar navbar-expand-sm navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "/", class: "navbar-brand" do %>
+      <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/free-caravan-1588405-1346334.png", alt: "Caravan") %>
+    <% end %>
+
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+
+
+          <li class="nav-item">
+            <%= link_to "Mis Caravanas", "/mycaravans", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Crear Caravana", "/caravans/new", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Solicitudes", "/requests", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Mis reservas", "/reservations", class: "nav-link" %>
+          </li>
+
+
+          <li class="nav-item">
+          <%= link_to current_user.email, "#", class: "nav-link" %>
+          </li>
+
+          <li class="nav-item dropdown">
+          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag "https://cdn.iconscout.com/icon/free/png-256/free-user-1648810-1401302.png", class: "avatar", alt: "dropdown menu" %>
+          </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Editar Perfil", "/users/edit", class: "nav-link" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+          </li>
+           <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="banner">
     <div class="row">
-      <div class="col-md-12 position-relative">
-        <%= image_tag("banner.jpg", alt: "Banner de una caravana", class: "img-fluid") %>
-        <h1 class="position-absolute top-50 end-0 translate-middle-y text-white me-5">Nomad Ride</h1>
+      <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 position-relative">
+        <%= image_tag("banner.jpg", alt: "Banner de una caravana", class: "imagen img-fluid") %>
+        <h1 class="position-absolute top-50 end-0 translate-middle-y text-white me-5 titulo">Nomad Ride</h1>
       </div>
     </div>
 </div>
 
+
 <div class="row justify-content-center">
   <div class="col-sm-8 my-3">
-    <%= form_with url: caravans_path, method: :get, class: "d-flex" do %>
+    <%= form_with url: caravans_path, method: :get, class: "d-flex search-form" do %>
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
-            placeholder: "Type a keyword"
+            class: "form-control search-input",
+            placeholder: "Busca por marca, modelo o ciudad"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Buscar", name: "", class: "btn btn-primary search-button" %>
     <% end %>
   </div>
 </div>
@@ -45,9 +103,9 @@
                   <p class="card-text"><%= "#{caravan.gas_type}" %></p>
                 </div>
                 <div class="d-flex justify-content-evenly mb-3">
-                  <p class="card-text"><%= "$ #{caravan.day_price} / day " %></p>
+                  <p class="card-text card-text-price"><%= "$ #{caravan.day_price} / día " %></p>
                 </div>
-                <%= link_to "Más detalles", caravan_path(caravan), class:"btn btn-primary" %>
+                <%= link_to "Detalles", caravan_path(caravan), class:"btn btn-primary" %>
               </div>
             </div>
           </div>
@@ -56,29 +114,29 @@
 
     <% else %>
         <div class="row">
-          <% @caravans.each do |caravan| %>
-            <div class="col-12 col-md-6 col-lg-4 mt-4">
-            <div class="card">
-              <div class="text-center mt-2">
-                <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill, class:"rounded" %>
-              </div>
+            <% @caravans.each do |caravan| %>
+                <div class="col-12 col-md-6 col-lg-4 mt-4">
+                    <div class="card">
+                      <div class="text-center mt-2">
+                        <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill, class:"rounded" %>
+                      </div>
 
-              <div class="card-body text-center">
-                <h5 class="card-title text-center text-center"><%= link_to caravan.brand.upcase, caravan_path(caravan) %></h5>
-                <h6 class="card-text mt-3 mb-4"><%= caravan.model %></h6>
-                <div class="d-flex justify-content-evenly mb-3">
-                  <p class="card-text"><%= "#{caravan.capacity} pers." %></p>
-                  <p class="card-text"><%= "Año: #{caravan.year}" %></p>
-                  <p class="card-text"><%= "#{caravan.gas_type}" %></p>
-                </div>
-                <div class="d-flex justify-content-evenly mb-3">
-                  <p class="card-text"><%= "$ #{caravan.day_price} / day " %></p>
-                </div>
-                <%= link_to "Más detalles", caravan_path(caravan), class:"btn btn-primary" %>
-              </div>
-            </div>
-          </div>
-          <% end %>
+                      <div class="card-body text-center">
+                        <h5 class="card-title text-center text-center"><%= link_to caravan.brand.upcase, caravan_path(caravan) %></h5>
+                        <h6 class="card-text mt-3 mb-4"><%= caravan.model %></h6>
+                        <div class="d-flex justify-content-evenly mb-3">
+                          <p class="card-text"><%= "#{caravan.capacity} pers." %></p>
+                          <p class="card-text"><%= "Año: #{caravan.year}" %></p>
+                          <p class="card-text"><%= "#{caravan.gas_type}" %></p>
+                        </div>
+                        <div class="d-flex justify-content-evenly mb-3">
+                          <h6 class="card-text card-text-price"><%= "$ #{caravan.day_price} / día " %></h6>
+                        </div>
+                        <%= link_to "Detalles", caravan_path(caravan), class:"btn btn-primary" %>
+                      </div>
+                    </div>
+                  </div>
+            <% end %>
         </div>
     <% end %>
 

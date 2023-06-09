@@ -3,17 +3,17 @@
   <div>
     <% if user_signed_in? && current_user.id == @caravan.user_id %>
       <%= simple_form_for(@caravan) do |f| %>
-      <%= f.input :brand %>
-      <%= f.input :year %>
-      <%= f.input :model %>
-      <%= f.input :capacity %>
-      <%= f.input :gas_type %>
-      <%= f.input :description %>
-      <%= f.input :day_price %>
-      <%= f.input :address %>
+      <%= f.input :brand, label: "Marca" %>
+      <%= f.input :year, label: "Año" %>
+      <%= f.input :model, label: "Modelo" %>
+      <%= f.input :capacity, label: "Capacidad"  %>
+      <%= f.input :gas_type, label: "Combustible" %>
+      <%= f.input :description, label: "Descripción" %>
+      <%= f.input :day_price, label: "Precio por día" %>
+      <%= f.input :address, label: "Ciudad" %>
       <div class="d-flex justify-content-evenly">
         <%= link_to("Cancelar", mycaravans_path, class:"btn btn-primary ms-2") %>
-        <%= f.submit class:"btn btn-primary"%>
+        <%= f.submit "Actualizar",class:"btn btn-primary"%>
       </div>
       <% end %>
   </div>
