@@ -126,9 +126,9 @@
                         <h5 class="card-title text-center text-center"><%= link_to caravan.brand.upcase, caravan_path(caravan) %></h5>
                         <h6 class="card-text mt-3 mb-4"><%= caravan.model %></h6>
                         <div class="d-flex justify-content-evenly mb-3">
-                          <p class="card-text"><%= "#{caravan.capacity} pers." %></p>
-                          <p class="card-text"><%= "Año: #{caravan.year}" %></p>
-                          <p class="card-text"><%= "#{caravan.gas_type}" %></p>
+                          <p class="card-texto"><%= "#{caravan.capacity} pers." %></p>
+                          <p class="card-texto"><%= "Año: #{caravan.year}" %></p>
+                          <p class="card-texto"><%= "#{caravan.gas_type}" %></p>
                         </div>
                         <div class="d-flex justify-content-evenly mb-3">
                           <h6 class="card-text card-text-price"><%= "$ #{caravan.day_price} / día " %></h6>
