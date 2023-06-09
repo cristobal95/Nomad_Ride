@@ -1,5 +1,9 @@
 require "open-uri"
 
+Caravan.all.destroy_all
+Reservation.all.destroy_all
+User.all.destroy_all
+
 users = [
   {
     first_name: "Cristóbal",
