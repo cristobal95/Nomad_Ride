@@ -10,3 +10,86 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.card {
+  transform: scale(0.95);
+  transition: box-shadow 0.3s, transform
+}
+
+.card:hover{
+  transform: scale(1);
+  box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+}
+
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.banner .imagen {
+  transition: opacity 0.3s ease;
+}
+
+.banner:hover .imagen {
+  opacity: 0.8;
+}
+
+#exclude-effects {
+  /* Reglas de estilo para excluir los efectos */
+  transition: none;
+}
+
+#exclude-effects:hover {
+  opacity: 1;
+}
+
+
+.card:hover .titulo {
+  transform: scale(1);
+  box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+}
+
+.nav-link {
+  text-decoration: none;
+  transform: scale(0.95);
+  transition: box-shadow 0.3s, transform
+}
+
+.nav-link:hover {
+  color: rgb(30, 30, 197);
+  transform: scale(1);
+  box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+  background-color: lightblue;
+  border-radius: 8px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-button {
+  background-color: #ccc;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  margin-left: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.search-button:hover {
+  background-color: #aaa;
+}
