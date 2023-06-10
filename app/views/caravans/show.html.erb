@@ -1,26 +1,31 @@
-<div class="container shadow mt-3 p-3 w-50">
-
-  <div class="text-center mt-3">
-    <h4 class="text-center mb-3">Detalles de la caravana</h4>
-    <%= cl_image_tag @caravan.photo.key, height: 300, width: 400, crop: :fill, class:"rounded" %>
+<div class="container shadow mt-3 p-3">
+  <div class="row">
+    <div class="col-12">
+      <div class="text-center mt-3">
+        <h4 class="text-center mb-3">Detalles de la caravana</h4>
+        <%= cl_image_tag @caravan.photo.key, height: 300, width: 400, crop: :fill, class:"rounded img-fluid" %>
+      </div>
+    </div>
   </div>
 
-
-  <div class="container w-50 h-50 content-center mt-2">
-    <h5 class="text-center"><%= @caravan.brand.upcase %></h5>
-    <h6 class="text-center mt-1 mb-2"><%= @caravan.model %></h6>
-    <p><%= "Año: #{@caravan.year}" %></p>
-
-    <p><%= "Combustible: #{@caravan.gas_type}" %></p>
-    <p><%= "Capacidad: #{@caravan.capacity} pers." %></p>
-    <p><%= "Ubicación: #{@caravan.address}" %></p>
-    <div class="d-flex justify-content-evenly mb-3">
-      <p class="card-texto"><%= "$ #{@caravan.day_price} / día " %></p>
+  <div class="container w-50 mt-2">
+    <div class="row">
+      <div class="col-12">
+        <h5 class="text-center"><%= @caravan.brand.upcase %></h5>
+        <h6 class="text-center mt-1 mb-2"><%= @caravan.model %></h6>
+        <p><%= "Año: #{@caravan.year}" %></p>
+        <p><%= "Combustible: #{@caravan.gas_type}" %></p>
+        <p><%= "Capacidad: #{@caravan.capacity} pers." %></p>
+        <p><%= "Ubicación: #{@caravan.address}" %></p>
+        <div class="d-flex justify-content-evenly mb-3">
+          <p class="card-texto"><%= "$ #{@caravan.day_price} / día " %></p>
+        </div>
+        <h3>Descripción:</h3>
+        <div class="border border-secondary p-3 rounded container mt-3 mb-3">
+          <p class="description-text"><%= @caravan.description %></p>
+        </div>
+      </div>
     </div>
-    <h3>Descripción:</h3>
-    <p class="border border-secondary p-3 w-100 rounded container mt-3 mb-3"><%= @caravan.description %></p>
-
-
   </div>
 
   <div class="container mb-3 p-3">
@@ -32,16 +37,17 @@
         data: {turbo_method: :delete, turbo_confirm: "Estas seguro?"}, class:"btn btn-primary" %>
       </div>
     <% else %>
-    <div class="d-flex justify-content-evenly">
-      <%= link_to("Volver", root_path, class:"btn btn-primary") %>
-      <%= link_to("Reservar", new_caravan_reservation_path(@caravan), class:"btn btn-primary") %>
-      <% end %>
-    </div><br>
+      <div class="d-flex justify-content-evenly">
+        <%= link_to("Volver", root_path, class:"btn btn-primary") %>
+        <%= link_to("Reservar", new_caravan_reservation_path(@caravan), class:"btn btn-primary") %>
+      </div>
+    <% end %>
+    <br>
     <h2 class="text-center">Ubicación</h2>
-        <div style="width: 100%; height: 600px;"
-          data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>

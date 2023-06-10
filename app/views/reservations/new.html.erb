@@ -13,6 +13,9 @@
       <%= simple_form_for [@caravan, @reservation] do |f| %>
       <%= f.input :start_date, html5:true, required: true, label: "Fecha de inicio" %>
       <%= f.input :finish_date, html5:true, required: true, label: "Fecha de finalización" %>
+      <p class="text-center"><%= "Precio por día: $ #{@caravan.day_price}" %></p>
+      <h6 class="font-weight-bold mt-3 text-center" id="resultado"></h6>
+      <%= f.input :total_price, as: :hidden, input_html: { id: 'total_price_input' } %>
       <div class="d-flex justify-content-evenly">
         <%= link_to("Volver", caravans_path, class:"btn btn-primary ms-2") %>
         <%= f.submit "Confirmar", class:"btn btn-primary"%>
@@ -20,5 +23,41 @@
       <% end %>
     </div>
   <% end %>
+  <script>
+    // Coloca aquí el código JavaScript
+    var precio = <%= @caravan.day_price %>;
+    document.addEventListener('DOMContentLoaded', function() {
+      // Obtener los elementos del formulario
+      var fechaInicioInput = document.getElementById('reservation_start_date');
+      var fechaFinInput = document.getElementById('reservation_finish_date');
 
+      // Agregar evento de cambio al campo "Fecha de finalización"
+      fechaFinInput.addEventListener('change', function() {
+        calcularTotal();
+      });
+    });
+
+
+    function calcularTotal() {
+      // Obtener los valores del formulario
+      var fechaInicio = new Date(document.getElementById('reservation_start_date').value);
+      var fechaFin = new Date(document.getElementById('reservation_finish_date').value);
+
+      // Calcular la cantidad de días entre las fechas
+      var unDia = 24 * 60 * 60 * 1000; // Cantidad de milisegundos en un día
+      var diferenciaDias = Math.round(Math.abs((fechaFin - fechaInicio) / unDia));
+
+      // Establecer un precio mínimo de un día si la fecha de finalización es el mismo día que la fecha de inicio
+      if (diferenciaDias === 0) {
+        diferenciaDias = 1;
+      }
+
+      // Calcular el total
+      var total = precio * diferenciaDias;
+
+      // Mostrar el resultado en un elemento HTML
+      document.getElementById('resultado').innerHTML = "Total: $" + total.toFixed(0);
+      document.getElementById('total_price_input').value = total.toFixed(0);
+    }
+  </script>
 </div>
