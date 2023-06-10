@@ -1,58 +1,58 @@
-<div class="container shadow mt-3 p-3 w-50 ">
-              <div>
-                <div class="text-center mt-3">
-                  <h4 class="text-center mb-3">Detalles de la reserva</h4>
-                  <%= cl_image_tag @reservation.caravan.photo.key, height: 200, width: 200, crop: :fill %>
-                </div>
+<div class="container shadow mt-3 p-3">
+  <div class="text-center mt-3">
+    <h4 class="text-center mb-3">Detalles de la reserva</h4>
+    <%= cl_image_tag @reservation.caravan.photo.key, height: 300, width: 400, crop: :fill %>
+  </div>
 
-                <div class="card-body text-center">
-                <h6 class="border shadow border-secondary p-3 w-50 rounded container mt-3 mb-3 <%= @reservation.status ? 'text-success' : 'text-danger' %>"><%= @reservation.status ? "Aprobada" : "Pendiente" %></h6> <br>
-                <p><%= "Fecha de inicio: #{ @reservation.start_date }" %></p>
-                <p><%= "Fecha de finalización: #{ @reservation.finish_date }" %></p>
-                <p><%= "Marca: #{ @reservation.caravan.brand} " %></p>
-                <p><%= "Modelo: #{ @reservation.caravan.model }" %></p>
-                <p><%= "Año: #{ @reservation.caravan.year }" %></p>
-                <p><%= "Gasolina: #{ @reservation.caravan.gas_type }" %></p>
-                <p><%= "Capacidad: #{ @reservation.caravan.capacity } pers." %></p>
-                <p><%= "Descripción: #{ @reservation.caravan.description }"  %></p>
+  <div class="card-body text-center">
+    <h6 class="border shadow border-secondary p-3 w-50 rounded container mt-3 mb-3 <%= @reservation.status ? 'text-success' : 'text-danger' %>"><%= @reservation.status ? "Aprobada" : "Pendiente" %></h6>
+    <br>
+    <p><%= "Fecha de inicio: #{ @reservation.start_date.strftime('%d-%m-%Y') }" %></p>
+    <p><%= "Fecha de finalización: #{ @reservation.finish_date.strftime('%d-%m-%Y') }" %></p>
+    <p><%= "Marca: #{ @reservation.caravan.brand} " %></p>
+    <p><%= "Modelo: #{ @reservation.caravan.model }" %></p>
+    <p><%= "Año: #{ @reservation.caravan.year }" %></p>
+    <p><%= "Gasolina: #{ @reservation.caravan.gas_type }" %></p>
+    <p><%= "Capacidad: #{ @reservation.caravan.capacity } pers." %></p>
+    <p><%= "Descripción: #{ @reservation.caravan.description }"  %></p>
 
-                <p><%= "Alquilada a: #{ @reservation.caravan.user.first_name }" if @reservation.caravan.user.id != current_user.id %></p>
-                <p><%= "Ubicación: #{ @reservation.caravan.address }"  %></p>
+    <p><%= "Alquilada a: #{ @reservation.caravan.user.first_name }" if @reservation.caravan.user.id != current_user.id %></p>
+    <p><%= "Ubicación: #{ @reservation.caravan.address }"  %></p>
+    <h6 class="font-weight-bold mt-3 text-center"><%= "Precio total: $#{@reservation.total_price.to_i}" %></h6>
 
-                <% if @reservation.caravan.user.id != current_user.id%>
-                  <div class="container d-flex justify-content-evenly">
-                  <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
 
-                  <%= link_to("Modificar reserva", edit_reservation_path, class:"btn btn-primary ms-2") %>
-
-                  <%= link_to "Cancelar reserva",
-                reservation_path(@reservation), class:"btn btn-primary ms-2",
-                data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
-
-                  </div>
-                <% else %>
-                
-                  <div class="container d-flex justify-content-center">
-                  <%= link_to("Volver", requests_path, class:"btn btn-primary ms-2") %>
-
-                  <%= link_to "Rechazar",
-                  reservation_path(@reservation), class:"btn btn-primary ms-2",
-                  data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
-                  <% if @reservation.status == false %>
-                    <%= button_to "Aprobar", reservations_change_status_path(id: @reservation), class:"btn btn-primary ms-2" %>
-                  <% end %>
-
-                <% end %>
-                <% if @reservation.caravan.user.id != current_user.id%>
-                  </div>
-                    <br>
-                    <h2 class="text-center">Ubicación</h2>
-                    <div style="width: 100%; height: 600px;"
-                      data-controller="map"
-                      data-map-markers-value="<%= @markers.to_json %>"
-                      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-                    </div>
-                  </div>
-                <% end %>
-              </div>
+    <% if @reservation.caravan.user.id != current_user.id %>
+      <div class="d-flex justify-content-evenly">
+        <% if @reservation.status == false %>
+          <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
+          <%= link_to("Modificar reserva", edit_reservation_path, class:"btn btn-primary ms-2") %>
+          <%= link_to "Cancelar reserva",
+            reservation_path(@reservation), class:"btn btn-primary ms-2",
+            data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
+        <% else %>
+          <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
+          <%= link_to "Cancelar reserva",
+            reservation_path(@reservation), class:"btn btn-primary ms-2",
+            data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
+        <% end %>
+      </div>
+      <br>
+      <h2 class="text-center">Ubicación</h2>
+      <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    <% else %>
+      <div class="d-flex justify-content-center">
+        <%= link_to("Volver", requests_path, class:"btn btn-primary ms-2") %>
+        <%= link_to "Rechazar",
+          reservation_path(@reservation), class:"btn btn-primary ms-2",
+          data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
+        <% if @reservation.status == false %>
+          <%= button_to "Aprobar", reservations_change_status_path(id: @reservation), class:"btn btn-primary ms-2" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
