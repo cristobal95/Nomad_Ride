@@ -35,15 +35,6 @@
 
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-<<<<<<< HEAD
-
-
-
-          @user.photo.attached?
-
-          <%#= cl_image_tag @user.photo.key, height: 200, width: 200, crop: :fill, class:"rounded" %>
-
-=======
           <% if current_user && current_user.photo.present? %>
             <% @user = User.new %>
             <% @user.id = current_user.id %>
@@ -51,7 +42,6 @@
           <% else %>
             <%= image_tag "https://cdn.iconscout.com/icon/free/png-256/free-user-1648810-1401302.png", class: "avatar", alt: "dropdown menu" %>
           <% end %>
->>>>>>> origin
           </a>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
