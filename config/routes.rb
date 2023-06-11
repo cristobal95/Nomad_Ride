@@ -24,4 +24,5 @@ Rails.application.routes.draw do
 
   get "/mycaravans", to: "caravans#mycaravans"
 
+
 end

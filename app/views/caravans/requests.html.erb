@@ -21,7 +21,7 @@
 
                 <div class="card-body text-center">
 
-                  <h6 class="border shadow border-secondary p-3 w-50 rounded container mt-3 mb-3 <%= reservation.status ? 'text-success' : 'text-danger' %>"><%= reservation.status ? "Aprobada" : "Pendiente" %></h6> <br>
+                  <h6 class="border shadow border-secondary p-3 w-50 rounded container mt-3 mb-1 <%= reservation.status ? 'text-success' : 'text-danger' %>"><%= reservation.status ? "Aprobada" : "Pendiente" %></h6> <br>
                   <p><%= "Marca: #{reservation.caravan.brand}" %></p> <br>
                   <p><%= "Modelo: #{reservation.caravan.model}"  %></p> <br>
                   <p><%= "Fecha de inicio: #{reservation.start_date}" %></p> <br>
@@ -29,7 +29,7 @@
                   <p><%= " #{reservation.caravan.capacity} pers." if reservation.caravan.user.id != current_user.id %></p> <br>
 
                   <div class="d-flex justify-content-center">
-                    <%= link_to("Ver detalles", reservation_path(reservation), class:"btn btn-primary ms-2") %>
+                    <%= link_to("Ver detalles", reservation_path(reservation), class:"btn btn-primary") %>
                   </div>
 
                 </div>

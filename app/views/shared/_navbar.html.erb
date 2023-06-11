@@ -30,16 +30,22 @@
 
 
           <li class="nav-item">
-          <%= link_to current_user.email, "#", class: "nav-link" %>
+          <%= link_to current_user.email, "/users/edit", class: "nav-link" %>
           </li>
 
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if current_user && current_user.photo.present? %>
+            <% @user = User.new %>
+            <% @user.id = current_user.id %>
+            <%= cl_image_tag @user.photo.key, height: 200, width: 200, crop: :fill %>
+          <% else %>
             <%= image_tag "https://cdn.iconscout.com/icon/free/png-256/free-user-1648810-1401302.png", class: "avatar", alt: "dropdown menu" %>
+          <% end %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Editar Perfil", "/users/edit", class: "nav-link" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <%= link_to "Cerrar sesión", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>
@@ -47,10 +53,11 @@
             <%= link_to "Caravanas", caravans_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+            <%= link_to "Registrarse", new_user_registration_path, class: "nav-link" %>
           </li>
            <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Iniciar sesión", new_user_session_path, class: "nav-link" %>
+
           </li>
         <% end %>
       </ul>
