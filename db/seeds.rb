@@ -194,24 +194,27 @@ puts "Caravanas creadass"
 reservations = [
   {
     user_id: 1,
-    caravan_id: 1,
+    caravan_id: 2,
     start_date: "2023/06/08",
     finish_date: "2023/07/08",
-    status: true
+    status: true,
+    total_price: 20
   },
   {
     user_id: 2,
-    caravan_id: 2,
+    caravan_id: 3,
     start_date: "2023/08/14",
     finish_date: "2023/09/10",
-    status: false
+    status: false,
+    total_price: 30
   },
   {
     user_id: 3,
-    caravan_id: 3,
+    caravan_id: 1,
     start_date: "2023/04/15",
     finish_date: "2023/05/15",
-    status: true
+    status: true,
+    total_price: 40
   }
 ]
 
