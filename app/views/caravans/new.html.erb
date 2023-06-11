@@ -10,8 +10,10 @@
     <%= f.input :description, label: "Descripción" %>
     <%= f.input :day_price, label: "Precio por día" %>
     <%= f.input :photo, as: :file, label: "Foto" %>
-    <div class="text-center">
-      <%= f.submit "Crear", class: "btn btn-primary" %>
+    <div class="d-flex justify-content-evenly">
+      <%= link_to("Volver", caravans_path, class:"btn btn-primary ms-2") %>
+      <%= f.submit "Crear", class:"btn btn-primary"%>
     </div>
+
   <% end %>
 </div>
