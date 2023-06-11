@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get "/requests", to: "caravans#requests"
 
-  resources :reservations, only: %i[index show edit update destroy]
+  resources :reservations, only: %i[index edit show update destroy]
 
   resources :caravans do
     resources :reservations, only: %i[new create]
