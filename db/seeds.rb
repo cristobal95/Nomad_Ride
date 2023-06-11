@@ -142,7 +142,7 @@ caravan_7 = Caravan.new(
   capacity: 10,
   gas_type: "Eléctrico",
   description: "Caravana con todas las comodidades de una autocaravana pero en un espacio más reducido. Se trata de un vehículo muy manejable para llegar a todos los rincones con toda tranquilidad. Dos son los puntos fuertes en su interior que la hacen destacar frente a la competencia, el nuevo cabin loft incrementa la movilidad y nos aporta mayor sensación de espacio y el baño dúplex, una solución única de baño de doble espacio.",
-  user_id: 2,
+  user_id: 1,
   address: "Santa Cruz de la Sierra",
   latitude: -17.8057529,
   longitude: -63.1787717,
@@ -160,7 +160,7 @@ caravan_8 = Caravan.new(
   capacity: 6,
   gas_type: "Gasolina",
   description: "Es un vehículo estupendo para disfrutar de la naturaleza, de nuestras playas, o fiestas populares, o simplemente para viajar en modo SLOW.Está muy cuidada, con todas las revisiones al día. Además en perfecto estado mecánico y sin deterioros en la chapa, ni en el equipamiento.",
-  user_id: 1,
+  user_id: 2,
   address: "Santiago de Chile, Chile",
   latitude: -33.5081562,
   longitude: -70.5931697,
@@ -178,7 +178,7 @@ caravan_9 = Caravan.new(
   capacity: 8,
   gas_type: "Gasolina",
   description: "Camper espectacular para ir con la familia, o para deportes, gracias a su garaje de gran volumen convertible.",
-  user_id: 2,
+  user_id: 3,
   address: "Santiago de Chile, Chile",
   latitude: -33.5081562,
   longitude: -70.5931697,
@@ -194,7 +194,7 @@ puts "Caravanas creadass"
 reservations = [
   {
     user_id: 1,
-    caravan_id: 3,
+    caravan_id: 2,
     start_date: "2023/06/08",
     finish_date: "2023/07/08",
     status: true,
@@ -202,7 +202,7 @@ reservations = [
   },
   {
     user_id: 2,
-    caravan_id: 6,
+    caravan_id: 3,
     start_date: "2023/08/14",
     finish_date: "2023/09/10",
     status: false,
@@ -210,7 +210,7 @@ reservations = [
   },
   {
     user_id: 3,
-    caravan_id: 8,
+    caravan_id: 1,
     start_date: "2023/04/15",
     finish_date: "2023/05/15",
     status: true,
