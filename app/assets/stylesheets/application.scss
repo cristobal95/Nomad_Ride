@@ -12,6 +12,7 @@
 @import "pages/index";
 
 
+
 .card {
   transform: scale(0.95);
   transition: box-shadow 0.3s, transform
@@ -233,4 +234,24 @@
 
 #card-custom {
   background-color: #c3dcde;
+}
+
+body .btn-primary {
+  background-color: #1D4E59 !important;
+  border-color: #1D4E59 !important;
+}
+
+body .btn-primary:hover {
+  background-color: #0C2E34 !important;
+  border-color: #0C2E34 !important;
+}
+
+body .btn-primary:active {
+  background-color: #1D4E59 !important;
+  border-color: #1D4E59 !important;
+}
+
+body .brand-green {
+  color: #1D4E59 !important;
+
 }
