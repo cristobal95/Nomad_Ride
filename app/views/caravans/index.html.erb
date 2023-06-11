@@ -61,11 +61,10 @@
     </div>
   </div>
 </div>
-
 <div class="banner">
     <div class="row full-banner">
       <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 position-relative">
-        <%= image_tag("banner.jpg", alt: "Banner de una caravana", class: "imagen img-fluid") %>
+        <%= image_tag("banner.jpg", style: "width: 100%;", alt: "Banner de una caravana", class: "imagen img-fluid") %>
         <h1 class="position-absolute top-50 end-0 translate-middle-y text-white me-5 titulo">Nomad Ride</h1>
       </div>
     </div>
@@ -143,7 +142,10 @@
                         <div class="d-flex justify-content-evenly mb-3">
                           <h6 class="card-text card-text-price"><%= "$ #{caravan.day_price} / día " %></h6>
                         </div>
-                        <%= link_to "Detalles", caravan_path(caravan), class:"btn btn-primary" %>
+                        <div class="d-flex justify-content-evenly">
+                          <%= link_to "Detalles", caravan_path(caravan), class:"btn btn-primary" %>
+                          <%= link_to "Reservar", new_caravan_reservation_path(caravan), class:"btn btn-primary ml-xl-6", method: :get %>
+                        </div>
                       </div>
                     </div>
                   </div>
