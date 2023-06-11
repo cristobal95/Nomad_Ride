@@ -7,6 +7,15 @@ class ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
+    # @caravan = Caravan.find(:caravan_id)
+    # @markers = [
+    #   {
+    #     lat: @caravan.latitude,
+    #     lng: @caravan.longitude,
+    #     info_window_html: render_to_string(partial: "info_window", locals: { caravan: @caravan }),
+    #     marker_html: render_to_string(partial: "marker", locals: { caravan: @caravan })
+    #   }
+    # ]
   end
 
   def new
