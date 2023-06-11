@@ -58,10 +58,10 @@
 }
 
 .nav-link:hover {
-  color: rgb(30, 30, 197);
+  color: rgb(125, 121, 121);
   transform: scale(1);
   box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
-  background-color: lightblue;
+  background-color: #c3dcde;
   border-radius: 8px;
 }
 
@@ -236,6 +236,8 @@
   background-color: #c3dcde;
 }
 
+
+
 body .btn-primary {
   background-color: #1D4E59 !important;
   border-color: #1D4E59 !important;
@@ -254,4 +256,8 @@ body .btn-primary:active {
 body .brand-green {
   color: #1D4E59 !important;
 
+}
+
+a.brand {
+  color: #0666AE !important;
 }
