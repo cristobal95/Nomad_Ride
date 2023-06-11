@@ -1,11 +1,11 @@
-<div class="container shadow mt-3 p-3">
+<div class="container-fluid shadow mt-3 p-3">
   <div class="text-center mt-3">
     <h4 class="text-center mb-3">Detalles de la reserva</h4>
-    <%= cl_image_tag @reservation.caravan.photo.key, height: 300, width: 400, crop: :fill %>
+    <%= cl_image_tag @reservation.caravan.photo.key, height: 300, width: 400, crop: :fill, class: "img-fluid mx-auto" %>
   </div>
 
   <div class="card-body text-center">
-    <h6 class="border shadow border-secondary p-3 w-50 rounded container mt-3 mb-3 <%= @reservation.status ? 'text-success' : 'text-danger' %>"><%= @reservation.status ? "Aprobada" : "Pendiente" %></h6>
+    <h6 class="border shadow border-secondary p-3 w-90 rounded container mt-3 mb-3 <%= @reservation.status ? 'text-success' : 'text-danger' %>"><%= @reservation.status ? "Aprobada" : "Pendiente" %></h6>
     <br>
     <p><%= "Fecha de inicio: #{ @reservation.start_date.strftime('%d-%m-%Y') }" %></p>
     <p><%= "Fecha de finalización: #{ @reservation.finish_date.strftime('%d-%m-%Y') }" %></p>
@@ -22,17 +22,17 @@
 
 
     <% if @reservation.caravan.user.id != current_user.id %>
-      <div class="d-flex justify-content-evenly">
+      <div class="d-flex flex-wrap justify-content-evenly">
         <% if @reservation.status == false %>
-          <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
-          <%= link_to("Modificar reserva", edit_reservation_path, class:"btn btn-primary ms-2") %>
+          <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2 mb-2 mt-3") %>
+          <%= link_to("Modificar reserva", edit_reservation_path, class:"btn btn-primary ms-2 mb-2 mt-3") %>
           <%= link_to "Cancelar reserva",
-            reservation_path(@reservation), class:"btn btn-primary ms-2",
+            reservation_path(@reservation), class:"btn btn-primary ms-2 mb-2 mt-3",
             data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
         <% else %>
-          <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2") %>
+          <%= link_to("Volver", reservations_path, class:"btn btn-primary ms-2 mb-2 mt-3") %>
           <%= link_to "Cancelar reserva",
-            reservation_path(@reservation), class:"btn btn-primary ms-2",
+            reservation_path(@reservation), class:"btn btn-primary ms-2 mb-2 mt-3",
             data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
         <% end %>
       </div>
@@ -45,12 +45,12 @@
       </div>
     <% else %>
       <div class="d-flex justify-content-center">
-        <%= link_to("Volver", requests_path, class:"btn btn-primary ms-2") %>
+        <%= link_to("Volver", requests_path, class:"btn btn-primary ms-2 mb-2 mt-3") %>
         <%= link_to "Rechazar",
-          reservation_path(@reservation), class:"btn btn-primary ms-2",
+          reservation_path(@reservation), class:"btn btn-primary ms-2 mb-2 mt-3",
           data: {turbo_method: :delete, turbo_confirm: "Estás seguro/a?"} %>
         <% if @reservation.status == false %>
-          <%= button_to "Aprobar", reservations_change_status_path(id: @reservation), class:"btn btn-primary ms-2" %>
+          <%= button_to "Aprobar", reservations_change_status_path(id: @reservation), class:"btn btn-primary ms-2 mb-2 mt-3" %>
         <% end %>
       </div>
     <% end %>
