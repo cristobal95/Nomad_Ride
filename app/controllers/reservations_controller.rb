@@ -44,14 +44,20 @@ class ReservationsController < ApplicationController
 
   def change_status
     @reservation = Reservation.find(params[:id])
-    @reservation.status = true
-    @reservation.save
-    redirect_to requests_path
+    if @reservation.status == false
+      @reservation.status = true
+      @reservation.save
+      redirect_to requests_path
+    else
+      @reservation.status = false
+      @reservation.save
+      redirect_to requests_path
+    end
   end
 
   private
 
   def reservation_params
-    params.require(:reservation).permit(:start_date, :finish_date, :user_id, :caravan_id, :status)
+    params.require(:reservation).permit(:start_date, :finish_date, :user_id, :caravan_id, :status, :total_price)
   end
 end
