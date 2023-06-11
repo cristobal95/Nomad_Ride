@@ -102,7 +102,7 @@
               </div>
 
               <div class="card-body text-center">
-                <h5 class="card-title text-center text-center"><%= link_to caravan.brand.upcase, caravan_path(caravan) %></h5>
+                <h5 class="card-title text-center text-center"><%= link_to caravan.brand.upcase, caravan_path(caravan), class:"brand" %></h5>
                 <h6 class="card-text mt-3 mb-4"><%= caravan.model %></h6>
                 <div class="d-flex justify-content-evenly mb-3">
                   <p class="card-texto"><%= "#{caravan.capacity} pers." %></p>
@@ -133,7 +133,7 @@
                       </div>
 
                       <div class="card-body text-center">
-                        <h5 class="card-title text-center text-center"><%= link_to caravan.brand.upcase, caravan_path(caravan) %></h5>
+                        <h5 class="card-title text-center text-center"><%= link_to caravan.brand.upcase, caravan_path(caravan), class:"brand" %></h5>
                         <h6 class="card-text mt-3 mb-4"><%= caravan.model %></h6>
                         <div class="d-flex justify-content-evenly mb-3">
                           <p class="card-texto"><%= "#{caravan.capacity} pers." %></p>
