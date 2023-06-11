@@ -1,4 +1,4 @@
-<div class="container shadow mt-3 p-3 w-75">
+<div class="container shadow mt-3 p-3 w-80">
   <h3 class="text-center">Tus reservas</h3>
   <div class="row">
           <% @reservation.each do |reservation| %>
@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="card-body text-center">
-                  <h6 class="border shadow border-secondary p-3 w-50 rounded container mt-3 mb-3 <%= reservation.status ? 'text-success' : 'text-danger' %>"><%= reservation.status ? "Aprobada" : "Pendiente" %></h6> <br>
+                  <h6 class="border shadow border-secondary p-3 w-90 rounded container mt-3 mb-3 <%= reservation.status ? 'text-success' : 'text-danger' %>"><%= reservation.status ? "Aprobada" : "Pendiente" %></h6> <br>
                   <p><%= "Fecha de inicio: #{ reservation.start_date.strftime('%d-%m-%Y') }" %></p>
                   <p><%= "Fecha de finalización: #{ reservation.finish_date.strftime('%d-%m-%Y') }" %></p>
                   <p><%= "Marca: #{reservation.caravan.brand}" %></p> <br>
