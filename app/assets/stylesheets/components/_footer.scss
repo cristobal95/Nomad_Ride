@@ -6,7 +6,7 @@
   height: 80px;
   padding: 0px 50px;
   color:rgb(255, 255, 255);
-  font-size: 18px;
+  font-size: 1.25em;
  //  position: fixed;
   margin-top: 50px;
   bottom: 0;
@@ -23,7 +23,7 @@
 .footer-links a {
   color: rgb(255, 255, 255);
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1.25em;
   padding: 0px 10px;
 }
 
@@ -33,4 +33,8 @@
 
 .footer .fa-regular {
   color: #D23333;
+}
+
+.up i {
+font-size: 1.25em;
 }

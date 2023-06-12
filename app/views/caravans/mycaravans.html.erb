@@ -1,13 +1,17 @@
 <div class="container shadow mt-3 p-3 w-75">
   <div>
-    <h5>Tus caravanas publicadas</h5>
+    <h2 class="card-title mt-4 font-weight-bold">Tus caravanas publicadas</h2>
   </div>
       <div class="row">
         <% @caravans.each do |caravan| %>
           <div class="col-12 col-md-6 col-lg-4 mt-4">
           <div class="card">
             <div class="text-center mt-2">
-              <%= cl_image_tag caravan.photo.key, height: 200, width: 200, crop: :fill, class:"rounded" %>
+
+            <%= link_to caravan_path(caravan) do %>
+              <%= cl_image_tag caravan.photo.key, { height: 200, width: 200, crop: :fill, class: "rounded" } %>
+              <% end %>
+
             </div>
 
             <div class="card-body text-center">

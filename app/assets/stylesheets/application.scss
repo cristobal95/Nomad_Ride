@@ -12,7 +12,6 @@
 @import "pages/index";
 
 
-
 .card {
   transform: scale(0.95);
   transition: box-shadow 0.3s, transform
@@ -86,6 +85,10 @@
   transition: background-color 0.3s ease;
 }
 
+.main-color {
+  background-color: #0056b3;
+}
+
 .search-input:focus {
   outline: none;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
@@ -97,7 +100,7 @@
 
 
 .navbar {
-  background-color: #f1f1f1;
+  background-color: #c1c1c1;
   padding: 10px;
 }
 
@@ -255,7 +258,6 @@ body .btn-primary:active {
 
 body .brand-green {
   color: #1D4E59 !important;
-
 }
 
 a.brand {
