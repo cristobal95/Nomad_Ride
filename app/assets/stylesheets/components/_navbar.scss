@@ -1,5 +1,5 @@
  body .navbar {
-  background-color: #d9d9d9
+  background-color: #ececec
 }
 
 .navbar-lewagon {
@@ -12,10 +12,10 @@
 
 
 .nav-item .nav-link {
- color: rgb(59, 45, 178);
+ color: #0867af;
 
  font-family: "Nunito", "Helvetica", "sans-serif";
- font-size: 1.25rem;
+ font-size: 1.1rem;
 font-weight: bold;
 
 }
@@ -26,6 +26,7 @@ body {
   padding: 0;
   position: relative;
   min-height: 100vh;
+  background-color: #ececec;
 }
 
 /* Other CSS styles for the navbar */

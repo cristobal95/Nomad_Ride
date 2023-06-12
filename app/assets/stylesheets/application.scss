@@ -12,10 +12,7 @@
 @import "pages/index";
 
 
-.card {
-  transform: scale(0.95);
-  transition: box-shadow 0.3s, transform
-}
+
 
 .card:hover{
   transform: scale(1);
@@ -175,12 +172,13 @@
 
 
 .container {
-  background-color: #ffffff;
+  background-color: #ececec;
 }
 
 .container h5 {
   font-size: 1.5rem;
   font-weight: bold;
+  color: #5e93c2
 }
 
 .container .row {
@@ -189,6 +187,8 @@
 
 .container .card {
   margin-top: 1rem;
+  border: 5px solid #7a9caa
+
 }
 
 .container .text-center {
@@ -197,6 +197,7 @@
 
 .container .card-body {
   text-align: center;
+  background-color: #ececec;
 }
 
 .container .card-title {
